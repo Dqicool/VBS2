@@ -111,19 +111,19 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     sepa = pluScalar(sepa, xmin);
 
 
-    auto h_rebin_sig = h_sig->Rebin(sepa.size()-1, &sn_sig[0], &sepa[0]);
-    auto h_rebin_bkg = h_bkg->Rebin(sepa.size()-1, &sn_bkg[0], &sepa[0]);
-    auto h_rebin_sigtrue = h_sigtrue->Rebin(sepa.size()-1, hn_sigtrue, &sepa[0]);
+    auto h_rebin_sig        = h_sig->Rebin(sepa.size()-1,       &sn_sig[0],         &sepa[0]);
+    auto h_rebin_bkg        = h_bkg->Rebin(sepa.size()-1,       &sn_bkg[0],         &sepa[0]);
+    auto h_rebin_sigtrue    = h_sigtrue->Rebin(sepa.size()-1,   hn_sigtrue,         &sepa[0]);
 
-    auto h_rebin_CW_NP   = h_CW_NP->Rebin(sepa.size()-1, &sn_CW_NP[0], &sepa[0]);
-    auto h_rebin_CW_NP2   = h_CW_NP2->Rebin(sepa.size()-1, &sn_CW_NP2[0], &sepa[0]);
-    auto h_rebin_CWtil_NP   = h_CWtil_NP->Rebin(sepa.size()-1, &sn_CWtil_NP[0], &sepa[0]);
-    auto h_rebin_CWtil_NP2   = h_CWtil_NP2->Rebin(sepa.size()-1, &sn_CWtil_NP2[0], &sepa[0]);
+    auto h_rebin_CW_NP      = h_CW_NP->Rebin(sepa.size()-1,     &sn_CW_NP[0],       &sepa[0]);
+    auto h_rebin_CW_NP2     = h_CW_NP2->Rebin(sepa.size()-1,    &sn_CW_NP2[0],      &sepa[0]);
+    auto h_rebin_CWtil_NP   = h_CWtil_NP->Rebin(sepa.size()-1,  &sn_CWtil_NP[0],    &sepa[0]);
+    auto h_rebin_CWtil_NP2  = h_CWtil_NP2->Rebin(sepa.size()-1, &sn_CWtil_NP2[0],   &sepa[0]);
     
-    auto h_rebin_CHW_NP   = h_CHW_NP->Rebin(sepa.size()-1, &sn_CHW_NP[0], &sepa[0]);
-    auto h_rebin_CHW_NP2   = h_CHW_NP2->Rebin(sepa.size()-1, &sn_CHW_NP2[0], &sepa[0]);
-    auto h_rebin_CHWtil_NP   = h_CHWtil_NP->Rebin(sepa.size()-1, &sn_CHWtil_NP[0], &sepa[0]);
-    auto h_rebin_CHWtil_NP2   = h_CHWtil_NP2->Rebin(sepa.size()-1, &sn_CHWtil_NP2[0], &sepa[0]);
+    auto h_rebin_CHW_NP     = h_CHW_NP->Rebin(sepa.size()-1,    &sn_CHW_NP[0],      &sepa[0]);
+    auto h_rebin_CHW_NP2    = h_CHW_NP2->Rebin(sepa.size()-1,   &sn_CHW_NP2[0],     &sepa[0]);
+    auto h_rebin_CHWtil_NP  = h_CHWtil_NP->Rebin(sepa.size()-1, &sn_CHWtil_NP[0],   &sepa[0]);
+    auto h_rebin_CHWtil_NP2 = h_CHWtil_NP2->Rebin(sepa.size()-1,&sn_CHWtil_NP2[0],  &sepa[0]);
 
 
     string sn_dat = (string)hn_dat + "dat";
@@ -151,7 +151,7 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
 }
 
 int main(){
-
+    
     binSizeEva( "output/stack_out/sigs/jjDelPhi.root",  "jj_dphi_cut_h",
                 "output/stack_out/sigs/jj_true_delphi.root",            "jj_truthBorn_dphi_cut_h",
                 "output/stack_out/bkgs/jjDelPhi.root",                  "jj_dphi_cut_h",
@@ -275,10 +275,10 @@ int main(){
                
                 "output/rebin_out/ap1.root",
                 1);
-    /*binSizeEva( "output/stack_out/sigs/m4l.root",                        "llll_m_cut_h", 
-                "output/stack_out/sigs/llll_true_m.root",                   "llll_truthBorn_m_cut_h", 
+    binSizeEva( "output/stack_out/sigs/m4l.root",                        "llll_m_cut_h", 
+                "output/stack_out/sigs/llll_true_m.root",                "llll_truthBorn_m_cut_h", 
                 "output/stack_out/bkgs/m4l.root",                        "llll_m_cut_h", 
-                "output/stack_out/Data.1516.root",                       "llll_m_cut_h", 
+                "output/stack_out/Data.1516.root",                       "h_llll_m_pass_cut", 
                
                 "output/rivet_out/root_CW_NP.hepmc.gz.yoda.root",       "qidong/m4l",
                 "output/rivet_out/root_CW_NP2.hepmc.gz.yoda.root",      "qidong/m4l",
@@ -295,7 +295,7 @@ int main(){
     binSizeEva( "output/stack_out/sigs/mjj.root",                        "jj_m_cut_h", 
                 "output/stack_out/sigs/jj_true_m.root",                   "jj_truthBorn_m_cut_h", 
                 "output/stack_out/bkgs/mjj.root",                        "jj_m_cut_h", 
-                "output/stack_out/Data.1516.root",                       "jj_m_cut_h", 
+                "output/stack_out/Data.1516.root",                       "h_jj_m_pass_cut", 
                
                 "output/rivet_out/root_CW_NP.hepmc.gz.yoda.root",       "qidong/mjj",
                 "output/rivet_out/root_CW_NP2.hepmc.gz.yoda.root",      "qidong/mjj",
@@ -308,6 +308,6 @@ int main(){
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/mjj",
                
                 "output/rebin_out/mjj.root",
-                0);*/
+                0);
     return 0;
 }

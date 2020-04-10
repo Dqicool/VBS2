@@ -34,6 +34,7 @@
 #include "Math/GenVector/Transform3D.h"
 #include "Math/GenVector/Plane3D.h"
 #include "Math/GenVector/VectorUtil.h"
+#include <Math/QuantFuncMathMore.h>
 
 #define Z_MASS 91.1876e3
 #define GeV 1e3
@@ -526,12 +527,12 @@ namespace qidong{
                     if(!veto){
                         pass_z1z2 = 1;
                         res.pt_bala = getPtBala(j1j2, z1z2);
-                        res.m_jj    = (j1j2[0] + j1j2[1]).mass();
-                        res.m_4l    = (z1z2[0] + z1z2[1]).mass();
+                        res.m_jj    = (j1j2[0] + j1j2[1]).mass() / 1000.;
+                        res.m_4l    = (z1z2[0] + z1z2[1]).mass() / 1000.;
                         res.dphi_jj = getDelPhiJJ(j1j2);
                         res.dy_jj   = TMath::Abs(j1j2[0].Rapidity() - j1j2[1].Rapidity());
-                        res.m_z1    = z1z2[0].mass();
-                        res.m_z2    = z1z2[1].mass();
+                        res.m_z1    = z1z2[0].mass() / 1000.;
+                        res.m_z2    = z1z2[1].mass() / 1000.;
                         res.centra  = getCentra(j1j2, z1z2);
                         if (std::abs(res.pt_bala) < 0.5){
                             pass_cut = 1;

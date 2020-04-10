@@ -5,16 +5,17 @@
 #define PRWLUMI (36.21 + 58.45 + 44.31) //fb-1
 
 #define MJJ_X_MIN 0
-#define MJJ_X_MAX 2000e3
+#define MJJ_X_MAX 2000
 #define MJJ_N_BIN 1000
 
 #define M4L_X_MIN 0
-#define M4L_X_MAX 1000e3
+#define M4L_X_MAX 1000
 #define M4L_N_BIN 1000
 
 #define PHI_X_MIN -M_PI
 #define PHI_X_MAX  M_PI
 #define PHI_N_BIN  10000
+
 
 TH1D getHisto(ROOT::RDataFrame df, const char* filterr, const char* dist, const char* weight, int nbins, double xmin, double xmax)
 {

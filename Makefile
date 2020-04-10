@@ -50,3 +50,6 @@ NPvSM: src/NPvSM.cpp
 
 limitSet: src/limitSet.cpp
 	$(CXX) $(ROOTFLAGS) -g src/limitSet.cpp -o build/limitSet $(ROOTLIBS) $(ROOTINC)
+
+test: src/test.cpp
+	$(CXX) $(ROOTFLAGS) -g src/test.cpp -o build/test $(ROOTLIBS) $(ROOTINC)
