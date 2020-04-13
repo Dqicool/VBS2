@@ -1,0 +1,160 @@
+\begin{thebibliography}{10}
+
+\bibitem{dawson1999introduction}
+S.~Dawson.
+\newblock Introduction to electroweak symmetry breaking, 1999.
+
+\bibitem{ALTARELLI:2005zv}
+Guido ALTARELLI.
+\newblock {The Standard model of particle physics}.
+\newblock 2005.
+
+\bibitem{peccei1995cp}
+R.~D. Peccei.
+\newblock Cp violation: A theoretical review, 1995.
+
+\bibitem{Evans:2008zzb}
+Lyndon Evans and Philip Bryant.
+\newblock {LHC Machine}.
+\newblock {\em JINST}, 3:S08001, 2008.
+
+\bibitem{ALESSANDRO201844}
+Ballestrero Alessandro and et. al.
+\newblock Vector boson scattering: Recent experimental and theory developments.
+\newblock {\em Reviews in Physics}, 3:44 -- 63, 2018.
+
+\bibitem{PhysRevLett.120.081801}
+A.~M. Sirunyan and et. al.
+\newblock Observation of electroweak production of same-sign w boson pairs in
+  the two jet and two same-sign lepton final state in proton-proton collisions
+  at sqrt[s]=13 tev.
+\newblock {\em Phys. Rev. Lett.}, 120:081801, Feb 2018.
+
+\bibitem{ATLAS-CONF-2019-033}
+{Observation of electroweak production of two jets in association with a
+  $Z$-boson pair in $pp$ collisions at $\sqrt{s} = 13$ TeV with the ATLAS
+  detector}.
+\newblock Technical Report ATLAS-CONF-2019-033, CERN, Geneva, Jul 2019.
+
+\bibitem{Cowan:2002in}
+G.~Cowan.
+\newblock {A survey of unfolding methods for particle physics}.
+\newblock {\em Conf. Proc.}, C0203181:248--257, 2002.
+\newblock [,248(2002)].
+
+\bibitem{Collaboration_2008}
+The~ATLAS Collaboration.
+\newblock The {ATLAS} experiment at the {CERN} large hadron collider.
+\newblock {\em Journal of Instrumentation}, 3(08):S08003--S08003, aug 2008.
+
+\bibitem{Nedden_2017}
+M.~zur Nedden.
+\newblock The {LHC} run 2 {ATLAS} trigger system: design, performance and
+  plans.
+\newblock {\em Journal of Instrumentation}, 12(03):C03024--C03024, mar 2017.
+
+\bibitem{weinzierl2000introduction}
+Stefan Weinzierl.
+\newblock Introduction to monte carlo methods, 2000.
+
+\bibitem{Buckley2019MonteCE}
+Andy Buckley and et. al.
+\newblock Monte carlo event generators for high energy particle physics event
+  simulation.
+\newblock 2019.
+
+\bibitem{0811.4622}
+T.~Gleisberg, S.~Hoeche, F.~Krauss, M.~Schoenherr, S.~Schumann, F.~Siegert, and
+  J.~Winter.
+\newblock Event generation with sherpa 1.1.
+\newblock 2008.
+
+\bibitem{1405.0301}
+J.~Alwall, R.~Frederix, S.~Frixione, V.~Hirschi, F.~Maltoni, O.~Mattelaer,
+  H.~S. Shao, T.~Stelzer, P.~Torrielli, and M.~Zaro.
+\newblock The automated computation of tree-level and next-to-leading order
+  differential cross sections, and their matching to parton shower simulations.
+\newblock 2014.
+
+\bibitem{0911.5299}
+Paolo Nason and Carlo Oleari.
+\newblock Nlo higgs boson production via vector-boson fusion matched with
+  shower in powheg.
+\newblock 2009.
+
+\bibitem{1410.3012}
+Torbjörn Sjöstrand, Stefan Ask, Jesper~R. Christiansen, Richard Corke,
+  Nishita Desai, Philip Ilten, Stephen Mrenna, Stefan Prestel, Christine~O.
+  Rasmussen, and Peter~Z. Skands.
+\newblock An introduction to pythia 8.2.
+\newblock 2014.
+
+\bibitem{1007.3893}
+Carlo Oleari.
+\newblock The powheg-box.
+\newblock 2010.
+
+\bibitem{AGOSTINELLI2003250}
+et.~al. S.~Agostinelli.
+\newblock Geant4—a simulation toolkit.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 506(3):250
+  -- 303, 2003.
+
+\bibitem{ANTCHEVA20092499}
+et.~al. I.~Antcheva.
+\newblock Root — a c++ framework for petabyte data storage, statistical
+  analysis and visualization.
+\newblock {\em Computer Physics Communications}, 180(12):2499 -- 2512, 2009.
+\newblock 40 YEARS OF CPC: A celebratory issue focused on quality software for
+  high performance, grid and novel computing architectures.
+
+\bibitem{Atkin_2015}
+Ryan Atkin.
+\newblock Review of jet reconstruction algorithms.
+\newblock {\em Journal of Physics: Conference Series}, 645:012008, oct 2015.
+
+\bibitem{Aaboud_2019}
+M.~Aaboud, G.~Aad, B.~Abbott, D.~C. Abbott, O.~Abdinov, B.~Abeloos, D.~K.
+  Abhayasinghe, S.~H. Abidi, O.~S. AbouZeid, and et~al.
+\newblock Electron reconstruction and identification in the atlas experiment
+  using the 2015 and 2016 lhc proton–proton collision data at $\sqrt{s} =
+  13$tev.
+\newblock {\em The European Physical Journal C}, 79(8), Aug 2019.
+
+\bibitem{refId0}
+{Schmitt, Stefan}.
+\newblock Data unfolding methods in high energy physics.
+\newblock {\em EPJ Web Conf.}, 137:11008, 2017.
+
+\bibitem{DAgostini:1994fjx}
+G.~D'Agostini.
+\newblock {A Multidimensional unfolding method based on Bayes' theorem}.
+\newblock {\em Nucl. Instrum. Meth.}, A362:487--498, 1995.
+
+\bibitem{DAgostini2010ImprovedIB}
+Giulio D'Agostini.
+\newblock Improved iterative bayesian unfolding.
+\newblock 2010.
+
+\bibitem{Bernlochner_2019}
+Florian~U. Bernlochner, Christoph Englert, Chris Hays, Kristin Lohwasser,
+  Hannes Mildner, Andrew Pilkington, Darren~D. Price, and Michael Spannowsky.
+\newblock Angles on cp-violation in higgs boson interactions.
+\newblock {\em Physics Letters B}, 790:372–379, Mar 2019.
+
+\bibitem{adye2011unfolding}
+Tim Adye.
+\newblock Unfolding algorithms and tests using roounfold, 2011.
+
+\bibitem{ATL-PHYS-PUB-2019-005}
+{Expected performance of the ATLAS detector at the High-Luminosity LHC}.
+\newblock Technical Report ATL-PHYS-PUB-2019-005, CERN, Geneva, Jan 2019.
+
+\bibitem{Read_2002}
+A~L Read.
+\newblock Presentation of search results: {theCLstechnique}.
+\newblock {\em Journal of Physics G: Nuclear and Particle Physics},
+  28(10):2693--2704, sep 2002.
+
+\end{thebibliography}

@@ -1,0 +1,300 @@
+
+
+
+    Model independent measurement of production of two jets with two charged lepton pairs in ATLAS detector at 
+    Dong Qichen
+    
+    
+        Model independent measurement of the cross section and geometrical asymmetry of inclusive production of two 
+        jets with two charged lepton pairs via two Z bosons in a fiducial phase space with detector effect removed. 
+        the measurement is performed using  of proton proton collision data collected in the ATLAS detector 
+        at the Large Hadron Collider and Monte Carlo simulation corresponding to the data. The result shows 
+        great consistancy with the standard model expectation. The fiducial phase space is further separated to a 
+        electro-weak enhanced signal region and three strong process dominated control regions.
+
+        
+    Introduction
+        Vector boson scattering (VBS) process is important as a pure electroweak interaction to 
+        probe the nature of electroweak symmetry breaking (EWSB). At the TeV scale, VBS process alone violated the longitudinally
+        unitarity, however, in the standard model (SM), the apparence of higgs boson cancels the violation rigorously. Since higher order effects 
+        beyond the SM (BSM) are suppressed tromendusly at low energy scale, study of VBS process in higher energy scale may gives hints of BSM theories 
+        which offer alternative EWSB machenisms to break the elegent cancellation of longitudinally unitarity. Moreover, study of the VBS process provides
+        a good chance to observe the CP violating effects that contribute to the large matter antimatter asymetry observed in the universe. Since no CP 
+        vioaltion effect is predicted in the SM in the VBS process, only sources of CP violation come from BSM theories which interfere with the SM. 
+
+        In the Large hardron collidor (LHC), VBS events are produced by a pair of vector bosons which produced by initial partrons scattered into another
+        pair of vector bosons. At detector level, events with two jets associated with 2 pairs of leptons originated from vector bosons pair are the signiture of
+        VBS process. Despite the complexity of final states, background processes other than the VBS can also produce exactly the same final state particles, we
+        denote these processes , one of the main  background is  production with strongly interacting verteices (). The most VBS concentrated 
+        channel is  processes with only electroweak verteices, denote as (). Figure  shows example Feynman diagrams of leading order  and  processes.
+        
+            
+                        The first order feynman diagrams contributing to  processes, the first line is  and the second line is  processes.
+                                        Despite same final state particle in leading order  and  process, the geometry configuration of them are quite different, 
+        Electroweak jjVV production process is expected to have a much larger jets separation since two heavy vector bosons emitted from each of the initial state 
+        quarks, while the Strong jjVV production is expected to be more likely to radiate additional jets since quark and gluon carrys color charge. Moreover, the vector
+        bosons  produced by EW jjZZ process are more centralised between the two associated jets and more balanced in . These informations were used to define the
+        signal region and control regions in the measurement.
+        The  process in which both vector bosons decay leptonically is extremely rare with cross section around  in current energy scale, but it is a relatively 
+        clean channel with minimal hardronic background. In this report, only events with final states contain 2 pairs of charged leptons from Z bosons was considered as signal, denote as ,
+        other procedures were considered as backgrounds.
+
+        In this report, the  pp collision data with centre of mass energy  collected by the atlas detector 
+        in 2016 is used, the cross section and the geometrical asymmetry of VBS process and irreduceable background in a VBS enhanced fidutial phase space is measured.
+        The experimental effect induced by the detector is removed by unfolding with the help of simulation events, so that the results can be directly 
+        compared by future experiments and used to set limit to the BSM theory.
+
+    ATLAS detector
+        The performance and geometry detail of ATLAS detector can be found in reference.
+        ATLAS detector is a general-purpose layered-design particle detector built in 2008, which is cylindrically symmetric to the beam axis with near complete coverage in solid angle.
+        The first layer, inner tracking detector covering pseudorapidity range  is submerged in 2T axial magnetic field produced by superconducting electromagnet, which is designed to track charged particles. 
+        The second layer is the complex of electromagnetic calorimeter and hardroninc calorimeter, where particles interact with the material and deposit energy, both covering . In the region where , 
+        a forward electromagnetic and hadronic calorimeters is used.
+        The third layer is the large muon spectrometer covering , due to the high penetrating power of muon, both calorimeter cannot 
+        stop muons, much larger apperatus is used to capture their track.
+        Around 25  collides (2016) in the center of the detector each time beams cross the detector, 
+        resulting around 1 billion collisions per second, most of which are elastic collision contain little information, 
+        complicate hardware and software online trigger system is 
+        used to cutdown events rate to about 1000 per second for analyists to study offline. 
+        A cut-away view of the ATLAS detector with main components labeled is shown in Figure .
+        
+            
+                        A cut-away wiew of the ATLAS detector, major components and the dimension of it is labeled.
+                        
+            Data and Simulation
+        The measurement is performed using the pp collision data recorded during 2015 and 2016 run of LHC with .
+        During this peroid, an integrated luminosity of  is obtained. Data taken in 2017 and 2018 run can be used in 
+        the future for further analysis.
+        Simulation for various processes used in the measurement are generated by different Monte Carlo (MC) generators, three generations 
+        of simulation events corresponding to 3 years of LHC run with different pile up and integrated luminosity are available, adding up 
+        to simulation data corresponding to a total of . Only the simulation data corresponding to 2015-2016 run was used in this measurement
+        to have best prediction to the data.
+        The  process is modeled by Sherpa2.2.2 with NNPDF3.0NNLO partron distribution function (PDF) at leading order (LO).
+        The vector boson fusion (VBF) higgs contribution is modeled using POWHEGVBFH configuration with Pythia8 showering and NNPDF3.0 PDF.
+
+        The  process is generated by Sherpa2.2.2 with NNPDF30NNLO PDF, events with less then 2 jets are generated at next to LO(NLO), others are generated 
+        at LO, while  contribution is generated separately by POWHEG with Pythia8 showering and NNPDF2.3 PDF.
+        The  process is modeled using Sherpa2.2.2 with NNPDF30NNLO PDF, again, the  is modeled separately with POWHEG and Pythia8.
+
+        The production of  events is produced by POWHEG with Pythia8. The EW triboson process with the same order of  is modeled by Sherpa2.2.2 with NNPDF30NNLO PDF.
+        Single Z boson decay is modeled by Sherpa with NNPDF30NNLO PDF while  decay is modeled separately with the same configuration.  production is modeled by 
+        POWHEG with Pythia8 showering.
+
+        All MC simulations include detailed detector simulation by Geant4,
+        for  processes, truth-level (without detector simulation) simulation are also provided.
+        both simulated events and the data were reconstructed using raw spatial and momentum of leptons and 
+        jets in CERN ROOT framework.
+
+    Candidates selection
+        [ht!]
+                        X c 
+                        Objects &  
+ 
+                        Electrons &  
+
+                        Muons &  
+
+                        Jets &   for  
+
+                        OSFC lepton pairs &  
+
+                        Dijets system &  
+
+                        jjZZ system & 
+
+                                    Summary of selection applied for selecting events in SR and CR phase space.
+                            Selecting the desired  events while substracting other background effects 
+        is challenging, while distinguishing  and  is even harder, the 
+        final states of both process are identical but we can still study the differences
+        in geometry information and possible associated process of these events. The selection used in 
+        this report is largly similar to the selection detailed in ref..
+        The detector-level selection relies on the properties of all final state particles, namely charged leptons
+        and jets. 
+        Jets within  were required to have transverse momentum () higher than 30 GeV,
+        jets with higher pseudorapidity  must have  GeV. 
+        Muons were identified by compatible tracks in the muon spectrometer and the inner tracking detector. 
+        outside the region of inner tracking detector, muons can also be identified by an MS track alone. 
+        The identified muons described above are required to have GeV. Muons are required to have   and satisfy
+        "loose" particle identification criterion. Electrons were identified using the information of the EM calorimeter and 
+        corresponding tracks in the inner tracking detector. Electrons is also required to satisfy "loose" identification working point, 
+        and have GeV and .
+        A "FixedCutPflowLoose" lepton isolation creteria is required by all identified charged leptons to 
+        remove leptons overlap with jets. Furthermore, the tracks of leptons were required to have transverse impact parameter  and 
+        longitudinal impact parameter  satisfying  and .
+
+        the resonance of Z boson pair were recostructed by two pairs of same flavor, opposite charge (denote SFOC) leptons, the tracks of two SFOC lepton pairs are required have separation , 
+        where , moreover, the three leading leptons with higher  are required to have 
+         respectively. if more then two candidate OSFC lepton pairs were avilable, the lepton pairs with invarient mass() closest 
+        to Z boson mass were selected. the lepton pair with mass closest to Z boson mass are required to have invarient mass  and the 
+        other have .
+        Events must have at least two jets, the leading and subleading jets with  and 
+        and dijet invarient mass  and  were selected. 
+        The  events are predicted to be more balanced in , which is parametrised by 
+        
+        where  is the total  of the 4 leptons 2 jets system and the denominator is the scalar sum of individual .
+
+        With the fiducial phase space defined, signal region (SR) and control regions (CR) are further defined base on centrarity and
+        the apperence of additional jets inbetween the leading and subleading jets (denote ). The centrarity is defined as
+        
+        which indicates how the Z boson pair system is centraised in the dijet system. In SR region, events are required to have  
+        and , outside of which were defined as conjagate CR. Table  summarise the fiducial region, SR and CR definition used in the analysis.
+        the truth-level phase spaces are the same as the detector-level, except the lepton ID and isolation criterion,  and  which are not appliable in 
+        truth-level.
+        
+            
+                        Cutflow diagram of the predicted  event number after selection cuts. Uncertainty was omitted and numbers after the decimal point were preserved.
+                                        
+    Cutflow comparasion
+        In this measurement, three analysits worked on the similar fiducial volumes, while developing different algorithm for events selection.
+        It is valuable to check the consistancy of different implementations. A specific fiducial area and certain order of selecting physical objects were 
+        agreed and cutflow diagrams indicating predicted EW jjZZ event number based on simulation after each selection are obtained. Only in this section, the all
+        3 generations of simulation data were used and the phase space volume is slightly different from which is used in the measurement. 
+        Figure  shows a cutflow diagram which have been compared with other analyists and turn out to be consistant.
+        
+    Background and uncertainty
+        The  channel contain 3 major processes, namely ,  and ,
+        background process come mainly form process involve top quark, other contributions are small.
+        In this stage of measurement, all processes were modeled using the simulation events, the , triboson,
+         process and processes with top quark in leading order can produce same or similar final state
+        with signal process, if leptons or jets was misidentified, they can potentially fake  process, from now on 
+        denote "Other" process. There are potential to use data driven methods to constrain the background in future analysis.
+        [ht!]
+                        p0.1405 p0.1405  p0.1405  p0.1405  p0.1405  p0.1405  
+                        Process & Fiducial & SR &  &  & 
+
+                         &  &  &  &  &  
+
+             &  &  &  &  &  
+
+             &  &  &  &  & 
+
+             &  &  &  &  & 
+
+                         &  &  &  &  & 
+
+                         &  &  &  &  & 
+
+                                    Predicted and observed event number in fidutial region, SR and 3 CR regions. Observation is compatible with the SM prediction.
+                            With only detector level selection, the predicted distribution of 4-lepton imvarient mass () distribution is shown in Figure , 
+        in which the single Z boson resonance around 91 GeV dominated by  process, 
+        Higgs resonance around 125 GeV dominated by  process, and the "shoulder" of Z boson pair mass starting from about 182 GeV can be clearly seen.
+        In contrast, other background contributions (yellow) form a relatively flat distribution.
+        
+            
+                        Predicted  distribution with very fine binning, main resonance features are shown clearly.
+                                    
+                The number of expected and observed events in different regions defined are listed in Table , The observation is compatible with the SM prediction.
+        The uncertainty shown in the table only include statistical error, further work is needed to identify sources of systematical uncertainties. Systematical
+        error did not include in this measurement may contain the modelling error of simulation data, the interference between processes and the uncertainties due to 
+        the experimental limits. Due to low events yield, the inclusive fiducial region were used to perform the measurement, the predicted  and 
+         distributions overlayed with the observed data in the fiducial region are shown in Figure . 
+        
+        
+            
+                        the predicted and observed ,  distribution, showing observation is  consistant with the SM prediction.
+                                    
+    detector effect removal
+        The measured spectrums were "unfolded" to correct for detector effects, for example the inefficiency, 
+        limited resolution and events migration of the detector and triggers. The unfolding technique allows the measurement to be directly
+        compared with theory predictions without knowing details about experimental details and future experiments 
+        in the same fiducial region, which is a model-independent measurement. 
+        Theory framework
+            The unfolding technique relies on informations of how the particle-level (truth-level) events were measured and 
+            formed the detector-level (measurement-level) distributions, in other word, how the detector alter the ture distribution. 
+            The detector effect are described three key components:            The reconstruction efficiency  is defined as the probability of truth-level events in bin i pass the truth-level 
+            selection but faild to pass detector-level selection.
+            
+            the inefficiency is caused by the inefficiency of the trigger and the detector, as well as events that migrate out of the 
+            region in the detector-level.            The migration matrix  is measured as the fraction of truth-level events in bin i founded in bin j in the detector-level.
+            
+            The non diagnal part () indicates the probability of events migration, while the diagnal part  in the responce matrix is also called the purity, 
+            which indicates the ratio of events that do not migrate. the cause of migration is the limited resolution and accuracy of the detector.            The fake ratio  is defined as the ratio of events that pass detector-level selection but cutted in the truth-level over the number of events in truth-level bin i.
+            
+            A faked event can occur if the ditector miss identifies particles from another event.
+            If the migration can be ignored, , one can simply perform a bin-by-bin method to unfold, using
+            
+            rearrange the equation gives
+            
+            If migration cannot be ignored, it is possible to add a migration removal process using  in to the equation above
+            
+            It is clear that in order to get , inversion of the responce matrix is required.
+            consider a perfect distribution with no fake and no inefficiency, the equation above gives
+            
+            where summation convension over j is used and ,  represents vector and matrix.
+            Unfortunately this is a rather stong condition as  is not gurenteed for a measured distribution.
+            Even if  can be inverted, this method is not able to handle large statistical fluctuation as the inversion 
+            of matrix can contain negative value. 
+            Consider an arbitary observable distribution which obey normal distribution with 
+             and , due to limited resolution,  detector-level events was altered by a random gaussian function with 
+             and . Given no detector inefficiency nor faked event but with fairly high statistical fluctuation, 50 events was generated. 
+            Figure  shows the result of matrix reversion method on this example distribution.
+            
+                
+                                Unfolding result on an example distribution with high statistical fluctuation using matrix inversion method.
+                (a) the inversion method shows large deviation from truth due to unstable inverted response matrix. (b) the difference between unfolded spectrum and true distribution.
+                                
+                        An iterative unfolding method based on Baye's theorm can solve this problem, 
+            the best estimation of  is updated iteratively by 
+            
+            where  in the first iteration is given by . The updated estimation of 
+             can be compared with previous estimation, if the change is large, another iteration can be performed 
+            based on the current estimator. However, continuing to iterate brings increasingly large variation and the 
+            estimators approach the unstable solution from matrix inversion. This method is applied on the same 
+            distribution as stated previous, a much better performance is achieved and shown in figure             
+                
+                                Unfolding result on the same example distribution as previous using iterative method with 1 iteration, 
+                higher iteration will result in similar issue as seen in figure .
+                (a)The performance of unfolding is much better than inversion method. 
+                (b) The oscillation of the estimation is largely suppressed by iterative method.
+                                                    Distributions and unfolding
+            In this measurement, three distributions of observables are measured and unfolded, ,  and , 
+            while the first two are defined as above,  is a CP sensative observable defined as 
+            
+            where  are the azimuthal angles of the two jets selected, the order (1,2) is arranged according to the rapidities of the 
+            two jets, so that  is always the most forwarding jet in space. The asymmetry in positive and negative region of  distribution 
+            is a probe of CP violation, which is defined as
+            
+            Due to limited event yields in the fiducial region, the binning of the distribution is determined using the simulation 
+            data by requiring at least 10 events of inclusive  events per bin in detector-level prediction, the higgs region bin in  distribution 
+            () is hard-coded to show the higgs contribution and the bin of  is manually set to be symmetric over 0. 
+            The prediction of background processes are then used to substract the non  process in the observed data. 
+            The response matrix, efficiency and fake rate is calculated by simulation in truth and detector level. Finally, the iterative unfolding method is performed 
+            on each distribution based on these informations, two iterations are found to be optimal for all distributions since high purities in all 
+            three distributions. The response matrices and unfolding results of the three distributions are shown in figure   .
+            
+                
+                                (a) Predicted response matrix for  distribution in the fiducial region, where Det-Pred and Tru-Pred are detector-level and truth-level prediction respectively.
+                High purity is shown in this region. (b) the detector-level observation and the result of iterative unfolding with single interation on  distribution, both showing consistancy with SM prediction.
+                                                        
+                
+                                (a) Predicted response matrix for  distribution in the fiducial region, high purity is shown too. 
+                (b) the raw observation and the result of unfolding with the same method used in the  spectrum.
+                                                        
+                
+                                (a) Predicted response matrix for  distribution in the fiducial region, the only one bin gives low purity come from the detector migration from higgs region.
+                (b) the raw observation and the result of unfolding with the same method used in the  spectrum, the result is consistant with the SM prediction.
+                                                        As can be seen in the response matrices, all distributions have very high purity level since the bin width is much larger than the resolution of detector, 
+            only one bin that have low purity is the first bin of the  spectrum, which is caused by the Z-mass selections (see Table ) in the fiducial 
+            region excluded events with 4-lepton invarient mass lower than Z mass, these events shown in the first bin in detector-level are migrated from the higgs region in 
+            the truth-level.
+
+    Result
+        With the infrastructure in hand, the geometrical asymmetry  and the inclusive  cross section in the 
+        fiducial region defined as  can be measured, where the  
+        is the unfolded result in the fiducial region,  is the integrated luminosity  of the data. The asymmetry is measured
+        to be , which is consistant with the prediction . The fiducial 
+        cross section is found to be , which is also compatible with the SM prediction .
+        The uncertainties here are statistical only.
+    Conclusion
+        The result of the measurement shows great consistancy with the SM prediction, showing the great success of the SM theory and MC simulations. 
+        However, with the data corresponding to integrated luminosity of  expected to be delivered by the HL-LHC, 
+        the statistical uncertainty is expected to be 10 times lower compared to the  data, opening the chance of scrutiny of the SM with much 
+        higher accuracy. Moreover, the SR and CR is predicted to have ability of separating the EW and Strong events of jjZZ production, more statistics 
+        will enable us to check the pure EW VBS process separately.
+        With only little data, the unfolding method enables us to set limits of various theories that beyond the SM using the
+        confidence level (CL) technique. 
+        In the next term, the total of  of data collected in the ATLAS detector will be available, the main objective is estimating the 
+        systematical uncertainties and check the model sensativity to the BSM theories. 
+
+    unsrt
+        

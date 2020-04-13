@@ -36,6 +36,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
                 const char* fn_CHWtil_NP, const char* hn_CHWtil_NP,
                 const char* fn_CHWtil_NP2,const char* hn_CHWtil_NP2,
 
+                const char* fn_CHWB_NP,    const char* hn_CHWB_NP,
+                const char* fn_CHWB_NP2,   const char* hn_CHWB_NP2,
+                const char* fn_CHWBtil_NP, const char* hn_CHWBtil_NP,
+                const char* fn_CHWBtil_NP2,const char* hn_CHWBtil_NP2,
+
                 const char* fn_out,   
                 bool sym_cent){
 
@@ -54,6 +59,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     TFile* f_CHWtil_NP = TFile::Open(fn_CHWtil_NP, "read");
     TFile* f_CHWtil_NP2 = TFile::Open(fn_CHWtil_NP2, "read");
 
+    TFile* f_CHWB_NP = TFile::Open(fn_CHWB_NP, "read");
+    TFile* f_CHWB_NP2 = TFile::Open(fn_CHWB_NP2, "read");
+    TFile* f_CHWBtil_NP = TFile::Open(fn_CHWBtil_NP, "read");
+    TFile* f_CHWBtil_NP2 = TFile::Open(fn_CHWBtil_NP2, "read");
+
 
     string sn_sig = (string)hn_sig + "sig";
     string sn_bkg = (string)hn_bkg + "bkg";
@@ -67,6 +77,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     string sn_CHW_NP2 = (string)hn_sig + "_CHW_NP2";
     string sn_CHWtil_NP = (string)hn_sig + "_CHWtil_NP";
     string sn_CHWtil_NP2 = (string)hn_sig + "_CHWtil_NP2";
+
+    string sn_CHWB_NP = (string)hn_sig + "_CHWB_NP";
+    string sn_CHWB_NP2 = (string)hn_sig + "_CHWB_NP2";
+    string sn_CHWBtil_NP = (string)hn_sig + "_CHWBtil_NP";
+    string sn_CHWBtil_NP2 = (string)hn_sig + "_CHWBtil_NP2";
 
 
     TH1D * h_sig = (TH1D*)f_sig->Get(hn_sig);
@@ -82,6 +97,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     TH1D * h_CHW_NP2 = (TH1D*)f_CHW_NP2->Get(hn_CHW_NP2);
     TH1D * h_CHWtil_NP = (TH1D*)f_CHWtil_NP->Get(hn_CHWtil_NP);
     TH1D * h_CHWtil_NP2 = (TH1D*)f_CHWtil_NP2->Get(hn_CHWtil_NP2);
+
+    TH1D * h_CHWB_NP = (TH1D*)f_CHWB_NP->Get(hn_CHWB_NP);
+    TH1D * h_CHWB_NP2 = (TH1D*)f_CHWB_NP2->Get(hn_CHWB_NP2);
+    TH1D * h_CHWBtil_NP = (TH1D*)f_CHWBtil_NP->Get(hn_CHWBtil_NP);
+    TH1D * h_CHWBtil_NP2 = (TH1D*)f_CHWBtil_NP2->Get(hn_CHWBtil_NP2);
     
 
     auto nbin = h_sig->GetNbinsX();
@@ -125,6 +145,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     auto h_rebin_CHWtil_NP  = h_CHWtil_NP->Rebin(sepa.size()-1, &sn_CHWtil_NP[0],   &sepa[0]);
     auto h_rebin_CHWtil_NP2 = h_CHWtil_NP2->Rebin(sepa.size()-1,&sn_CHWtil_NP2[0],  &sepa[0]);
 
+    auto h_rebin_CHWB_NP     = h_CHWB_NP->Rebin(sepa.size()-1,    &sn_CHWB_NP[0],      &sepa[0]);
+    auto h_rebin_CHWB_NP2    = h_CHWB_NP2->Rebin(sepa.size()-1,   &sn_CHWB_NP2[0],     &sepa[0]);
+    auto h_rebin_CHWBtil_NP  = h_CHWBtil_NP->Rebin(sepa.size()-1, &sn_CHWBtil_NP[0],   &sepa[0]);
+    auto h_rebin_CHWBtil_NP2 = h_CHWBtil_NP2->Rebin(sepa.size()-1,&sn_CHWBtil_NP2[0],  &sepa[0]);
+
 
     string sn_dat = (string)hn_dat + "dat";
     TFile* f_dat = TFile::Open(fn_dat, "read");
@@ -147,6 +172,11 @@ void binSizeEva(const char* fn_sig,      const char* hn_sig,
     h_rebin_CHW_NP2->Write();
     h_rebin_CHWtil_NP->Write();
     h_rebin_CHWtil_NP2->Write();
+
+    h_rebin_CHWB_NP->Write();
+    h_rebin_CHWB_NP2->Write();
+    h_rebin_CHWBtil_NP->Write();
+    h_rebin_CHWBtil_NP2->Write();
     outfile->Close();
 }
 
@@ -167,6 +197,11 @@ int main(){
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/jjDphi",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/jjDphi",
 
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/jjDphi",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/jjDphi",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/jjDphi",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/jjDphi",
+
                 "output/rebin_out/dPhiJJ.root", 
                 1);
     
@@ -185,6 +220,11 @@ int main(){
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/at1",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/at1",
 
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/at1",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/at1",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/at1",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/at1",
+
                 "output/rebin_out/at1.root", 
                 0);
     
@@ -202,6 +242,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/at2",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/at2",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/at2",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/at2",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/at2",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/at2",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/at2",
                
                 "output/rebin_out/at2.root",
                 0);
@@ -220,6 +265,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/ats",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/ats",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/ats",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/ats",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/ats",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/ats",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/ats",
                
                 "output/rebin_out/ats.root",
                 0);
@@ -237,6 +287,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/aps",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/aps",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/aps",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/aps",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/aps",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/aps",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/aps",
                
                 "output/rebin_out/aps.root",
                 1);
@@ -254,6 +309,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/ap0",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/ap0",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/ap0",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/ap0",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/ap0",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/ap0",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/ap0",
                
                 "output/rebin_out/ap0.root",
                 1);
@@ -272,6 +332,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/ap1",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/ap1",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/ap1",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/ap1",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/ap1",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/ap1",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/ap1",
                
                 "output/rebin_out/ap1.root",
                 1);
@@ -289,6 +354,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/m4l",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/m4l",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/m4l",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/m4l",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/m4l",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/m4l",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/m4l",
                
                 "output/rebin_out/m4l.root",
                 0);
@@ -306,6 +376,11 @@ int main(){
                 "output/rivet_out/root_CHW_NP2.hepmc.gz.yoda.root",     "qidong/mjj",
                 "output/rivet_out/root_CHWTIL_NP.hepmc.gz.yoda.root",   "qidong/mjj",
                 "output/rivet_out/root_CHWTIL_NP2.hepmc.gz.yoda.root",  "qidong/mjj",
+
+                "output/rivet_out/root_CHWB_NP.hepmc.gz.yoda.root",      "qidong/mjj",
+                "output/rivet_out/root_CHWB_NP2.hepmc.gz.yoda.root",     "qidong/mjj",
+                "output/rivet_out/root_CHWBTIL_NP.hepmc.gz.yoda.root",   "qidong/mjj",
+                "output/rivet_out/root_CHWBTIL_NP2.hepmc.gz.yoda.root",  "qidong/mjj",
                
                 "output/rebin_out/mjj.root",
                 0);

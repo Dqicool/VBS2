@@ -79,7 +79,10 @@ int main(){
         drawRatio("output/rebin_out/dPhiJJ.root", "output/rebin_out/dPhiJJ.root",    "output/rebin_out/dPhiJJ.root",    "jj_truthBorn_dphi_cut_h", "jj_dphi_cut_h_CHW_NP", "jj_dphi_cut_h_CHW_NP2",         1, "plots/rivet/Dphijj_CHW_ratio.png",    0.5, -M_PI, M_PI);
         //CHWTIL
         drawRatio("output/rebin_out/dPhiJJ.root", "output/rebin_out/dPhiJJ.root",    "output/rebin_out/dPhiJJ.root",    "jj_truthBorn_dphi_cut_h", "jj_dphi_cut_h_CHWtil_NP", "jj_dphi_cut_h_CHWtil_NP2",   1, "plots/rivet/Dphijj_CHWtil_ratio.png", 0.5, -M_PI, M_PI);
-
+        //CHWB
+        drawRatio("output/rebin_out/dPhiJJ.root", "output/rebin_out/dPhiJJ.root",    "output/rebin_out/dPhiJJ.root",    "jj_truthBorn_dphi_cut_h", "jj_dphi_cut_h_CHWB_NP", "jj_dphi_cut_h_CHWB_NP2",   1, "plots/rivet/Dphijj_CHWB_ratio.png", 0.5, -M_PI, M_PI);
+        //CHWBtil
+        drawRatio("output/rebin_out/dPhiJJ.root", "output/rebin_out/dPhiJJ.root",    "output/rebin_out/dPhiJJ.root",    "jj_truthBorn_dphi_cut_h", "jj_dphi_cut_h_CHWBtil_NP", "jj_dphi_cut_h_CHWBtil_NP2",   1, "plots/rivet/Dphijj_CHWBtil_ratio.png", 0.5, -M_PI, M_PI);
     //theta_star
         drawRatio("output/rebin_out/ats.root", "output/rebin_out/ats.root",    "output/rebin_out/ats.root",    "Angle_truthBorn_theta_star_cut_h", "Angle_theta_star_cut_h_CW_NP", "Angle_theta_star_cut_h_CW_NP2",     1, "plots/rivet/ats_CW_ratio.png",     0.2, -M_PI, M_PI);
         //CWtil
@@ -97,6 +100,10 @@ int main(){
         drawRatio("output/rebin_out/at1.root", "output/rebin_out/at1.root",    "output/rebin_out/at1.root",    "Angle_truthBorn_theta1_cut_h", "Angle_theta1_cut_h_CHW_NP", "Angle_theta1_cut_h_CHW_NP2",     1, "plots/rivet/at1_CHW_ratio.png",    0.2, -M_PI, M_PI);
         //CHWTIL
         drawRatio("output/rebin_out/at1.root", "output/rebin_out/at1.root",    "output/rebin_out/at1.root",    "Angle_truthBorn_theta1_cut_h", "Angle_theta1_cut_h_CHWtil_NP", "Angle_theta1_cut_h_CHWtil_NP2",     1, "plots/rivet/at1_CHWtil_ratio.png", 0.2, -M_PI, M_PI);
+        //CHWB 
+        drawRatio("output/rebin_out/at1.root", "output/rebin_out/at1.root",    "output/rebin_out/at1.root",    "Angle_truthBorn_theta1_cut_h", "Angle_theta1_cut_h_CHWB_NP", "Angle_theta1_cut_h_CHWB_NP2",     1, "plots/rivet/at1_CHWB_ratio.png",    0.2, -M_PI, M_PI);
+        //CHWBTIL
+        drawRatio("output/rebin_out/at1.root", "output/rebin_out/at1.root",    "output/rebin_out/at1.root",    "Angle_truthBorn_theta1_cut_h", "Angle_theta1_cut_h_CHWBtil_NP", "Angle_theta1_cut_h_CHWBtil_NP2",     1, "plots/rivet/at1_CHWBtil_ratio.png", 0.2, -M_PI, M_PI);
 
     //theta2
         drawRatio("output/rebin_out/at2.root", "output/rebin_out/at2.root",    "output/rebin_out/at2.root",    "Angle_truthBorn_theta2_cut_h", "Angle_theta2_cut_h_CW_NP", "Angle_theta2_cut_h_CW_NP2",     1, "plots/rivet/at2_CW_ratio.png",     0.2, -M_PI, M_PI);

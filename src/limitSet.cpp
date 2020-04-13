@@ -132,19 +132,53 @@ void     limSet(const char* fn_unf, const char* fn_np,
 
 
 int main(){
+    //CWt CHWBt phi
+    limSet("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+           "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+           "jj_dphi_cut_h_CWtil_NP",        "jj_dphi_cut_h_CWtil_NP2",      -2.0, 50, 2.0,
+           "jj_dphi_cut_h_CHWBtil_NP",           "jj_dphi_cut_h_CHWBtil_NP2",         -15.0, 50, 15.0,
+           2, 0.9, 0.95,
+           "plots/limit/CWt_CHWBt_phi_chi2.png", "plots/limit/CWt_CHWBt_phi_lim.png", "output/limit_out/CWt_CHWBt_phi.root");
+
+    //CHWt CHWBt phi
+    limSet("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+           "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+           "jj_dphi_cut_h_CHWtil_NP",        "jj_dphi_cut_h_CHWtil_NP2",      -2.0, 50, 2.0,
+           "jj_dphi_cut_h_CHWBtil_NP",           "jj_dphi_cut_h_CHWBtil_NP2",         -15.0, 50, 15.0,
+           2, 0.9, 0.95,
+           "plots/limit/CHWt_CHWBt_phi_chi2.png", "plots/limit/CHWt_CHWBt_phi_lim.png", "output/limit_out/CHWt_CHWBt_phi.root");
+    
     //CWt CHWt phi
     limSet("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
            "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
-           "jj_dphi_cut_h_CWtil_NP",        "jj_dphi_cut_h_CWtil_NP2",      -2.0, 100, 2.0,
-           "jj_dphi_cut_h_CHWtil_NP",           "jj_dphi_cut_h_CHWtil_NP2",         -2.0, 100, 2.0,
+           "jj_dphi_cut_h_CWtil_NP",        "jj_dphi_cut_h_CWtil_NP2",      -2.0, 50, 2.0,
+           "jj_dphi_cut_h_CHWtil_NP",           "jj_dphi_cut_h_CHWtil_NP2",         -2.0, 50, 2.0,
            2, 0.9, 0.95,
            "plots/limit/CWt_CHWt_phi_chi2.png", "plots/limit/CWt_CHWt_phi_lim.png", "output/limit_out/CWt_CHWt_phi.root");
+
+
     //CW CHW theta1
     limSet("output/unfold_out/at1.root", "output/rebin_out/at1.root",
            "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
-           "Angle_theta1_cut_h_CW_NP",        "Angle_theta1_cut_h_CW_NP2",      -2.0, 100, 2.0,
-           "Angle_theta1_cut_h_CHW_NP",           "Angle_theta1_cut_h_CHW_NP2",         -5.0, 100, 5.0,
+           "Angle_theta1_cut_h_CW_NP",        "Angle_theta1_cut_h_CW_NP2",      -2.0, 50, 2.0,
+           "Angle_theta1_cut_h_CHW_NP",           "Angle_theta1_cut_h_CHW_NP2",         -5.0, 50, 5.0,
            2, 0.9, 0.95,
-           "plots/limit/CW_CHW_at1_chi2.png", "plots/limit/CW_CHW_at1_lim.png", "output/limit_out/CWt_CHWt_at1.root");
-    //
+           "plots/limit/CW_CHW_at1_chi2.png", "plots/limit/CW_CHW_at1_lim.png", "output/limit_out/CW_CHW_at1.root");
+    
+    //CW CHWB theta1
+    limSet("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+           "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+           "Angle_theta1_cut_h_CW_NP",        "Angle_theta1_cut_h_CW_NP2",      -2.0, 50, 2.0,
+           "Angle_theta1_cut_h_CHWB_NP",           "Angle_theta1_cut_h_CHWB_NP2",         -10.0, 50, 10.0,
+           2, 0.9, 0.95,
+           "plots/limit/CW_CHWB_at1_chi2.png", "plots/limit/CW_CHWB_at1_lim.png", "output/limit_out/CW_CHWB_at1.root");
+
+    //CHW CHWB theta1
+    limSet("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+           "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+           "Angle_theta1_cut_h_CHW_NP",        "Angle_theta1_cut_h_CHW_NP2",      -5.0, 50, 5.0,
+           "Angle_theta1_cut_h_CHWB_NP",           "Angle_theta1_cut_h_CHWB_NP2",         -10.0, 50, 10.0,
+           2, 0.9, 0.95,
+           "plots/limit/CHW_CHWB_at1_chi2.png", "plots/limit/CHW_CHWB_at1_lim.png", "output/limit_out/CHW_CHWB_at1.root");
+
 }

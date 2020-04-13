@@ -77,7 +77,7 @@
     "editor.cursorSmoothCaretAnimation": true,
     "editor.fontFamily": "Iosevka,Iosevka,Iosevka,Iosevka",
     "editor.fontSize": 14,
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vs-seti",
     "files.autoSave": "onFocusChange",
     "explorer.openEditors.visible": 0,
     "terminal.integrated.fontSize": 14,

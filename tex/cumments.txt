@@ -1,0 +1,26 @@
+Hi Dong, 
+
+I am on holiday until Monday and only have 5-10mins to comment, so please be aware that I have not read this in detail. Some of the comments are similar to those I give all MPhys students!
+
+Structure: 
+- general structure (i.e. ordering of contents) is good.
+- section “detector effect removal” should be called “Unfolding” as that is the corerct terminology in the field. You can define unfolding where necessary
+- in the introduction, the last paragraph is a bit unclear about what you are trying to achieve and how this fits into the wider picture, i.e. what has already been measured. Please go through each pargraph and make sure the description is clear to the reader.
+
+Style and Grammar:
+- Most important comment: I suggest you run this through a spell-checker. For example, there are quite a lot of grammatical errors (i.e. missing articles, the first sentence of the abstract is missing a verb, some incorrect uses of words, some spelling mistakes, missing capitals at the start of sentences). At present, the text is rather hard to read.
+- as well as a spell-checker, I suggest you read each sentence carefully to make sure that each one is (i) correct in its physics, (ii) clear to the reader about its meaning.
+- The term “S ZZjj” is very hard to read, I suggest “Strong ZZjj"
+
+Physics content: 
+- introduction: para 3: the description of the strong ZZjj radiating more jets is very vague. After all, the EW ZZjj also has initial/final state quarks. So why does the strong ZZjj radiate more?
+- your introduction does not discuss the recent observation of VBS ZZjj by ATLAS, nor does it discuss the other VBS measurements by ATLAS/CMS
+- in general, I think the physics content is a little low. Examples: 
+(i)  the simulation discussion in section 3 looks correct technically, but the non-expert reader will not know how MC event generators simulate physics collisions. 
+(ii) the event selection in section 4 looks correct, but the reader will not know (for example) how jets are reconstructed in ATLAS.
+
+Evaluation of results: I have not had to read the later sections, but make sure all results are discussed and critically evaluated in the text.
+
+Cheers
+
+Andy
