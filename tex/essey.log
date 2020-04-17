@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.1.12)  14 JAN 2020 12:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.3)  14 APR 2020 22:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/mnt/SSD/VBS/tex/essey.tex
-(/mnt/SSD/VBS/tex/essey.tex
+**/mnt/SSD/VBS2/tex/essey.tex
+(/mnt/SSD/VBS2/tex/essey.tex
 LaTeX2e <2019-10-01> patch level 1
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -424,7 +424,11 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \c@caption@flags=\count114
 \c@ContinuedFloat=\count115
 Package caption Info: hyperref package is loaded.
-) (/mnt/SSD/VBS/tex/essey.aux)
+) (/mnt/SSD/VBS2/tex/essey.aux
+
+LaTeX Warning: Label `regevtstable' multiply defined.
+
+)
 \openout1 = `essey.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -519,7 +523,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
 LaTeX Info: Redefining \nameref on input line 17.
- (/mnt/SSD/VBS/tex/essey.out) (/mnt/SSD/VBS/tex/essey.out)
+ (/mnt/SSD/VBS2/tex/essey.out) (/mnt/SSD/VBS2/tex/essey.out)
 \@outlinefile=\write3
 \openout3 = `essey.out'.
 
@@ -540,13 +544,13 @@ File: ps/Feynman_diag.png Graphic file (type png)
 <use ps/Feynman_diag.png>
 Package pdftex.def Info: ps/Feynman_diag.png  used on input line 66.
 (pdftex.def)             Requested size: 400.28273pt x 176.63872pt.
- [2] [3 </mnt/SSD/VBS/tex/ps/Feynman_diag.png>]
+ [2] [3 </mnt/SSD/VBS2/tex/ps/Feynman_diag.png>]
 <ps/atlas_det.png, id=95, 1196.47pt x 703.62875pt>
 File: ps/atlas_det.png Graphic file (type png)
 <use ps/atlas_det.png>
 Package pdftex.def Info: ps/atlas_det.png  used on input line 110.
 (pdftex.def)             Requested size: 418.77078pt x 246.27374pt.
- [4] [5 </mnt/SSD/VBS/tex/ps/atlas_det.png>]
+ [4] [5 </mnt/SSD/VBS2/tex/ps/atlas_det.png>]
 Overfull \hbox (23.57983pt too wide) in paragraph at lines 132--133
 \OT1/cmr/m/n/12 NNPDF30NNLO PDF. Sin-gle Z bo-son de-cay is mod-elled by Sherpa with NNPDF30NNLO
  []
@@ -585,7 +589,7 @@ Overfull \hbox (4.49678pt too wide) in alignment at lines 241--241
 [][][][][][] 
  []
 
-[9 </mnt/SSD/VBS/tex/ps/cutflow_stack.png (PNG copy)>]
+[9 </mnt/SSD/VBS2/tex/ps/cutflow_stack.png (PNG copy)>]
 <ps/det_llll_m_stack.png, id=160, 2733.21124pt x 1827.82875pt>
 File: ps/det_llll_m_stack.png Graphic file (type png)
 <use ps/det_llll_m_stack.png>
@@ -596,58 +600,77 @@ File: ps/mjj_m4l_equalbins.png Graphic file (type png)
 <use ps/mjj_m4l_equalbins.png>
 Package pdftex.def Info: ps/mjj_m4l_equalbins.png  used on input line 269.
 (pdftex.def)             Requested size: 426.85522pt x 199.87665pt.
- [10] [11 </mnt/SSD/VBS/tex/ps/det_llll_m_stack.png>] [12 </mnt/SSD/VBS/tex/ps/mjj_m4l_equalbins.png>]
-<ps/unfold_demo.png, id=186, 1796.7125pt x 868.24374pt>
+ [10] [11 </mnt/SSD/VBS2/tex/ps/det_llll_m_stack.png>] [12 </mnt/SSD/VBS2/tex/ps/mjj_m4l_equalbins.png>]
+<ps/unfold_demo.png, id=187, 1796.7125pt x 868.24374pt>
 File: ps/unfold_demo.png Graphic file (type png)
 <use ps/unfold_demo.png>
 Package pdftex.def Info: ps/unfold_demo.png  used on input line 317.
 (pdftex.def)             Requested size: 413.23518pt x 199.69185pt.
  [13]
-<ps/unfold_demo_bayes.png, id=197, 1796.7125pt x 868.24374pt>
+<ps/unfold_demo_bayes.png, id=198, 1796.7125pt x 868.24374pt>
 File: ps/unfold_demo_bayes.png Graphic file (type png)
 <use ps/unfold_demo_bayes.png>
 Package pdftex.def Info: ps/unfold_demo_bayes.png  used on input line 334.
 (pdftex.def)             Requested size: 413.23518pt x 199.69185pt.
- [14 </mnt/SSD/VBS/tex/ps/unfold_demo.png>]
-<ps/del_redi.png, id=213, 3976.8575pt x 1791.69376pt>
+ [14 </mnt/SSD/VBS2/tex/ps/unfold_demo.png>]
+<ps/del_redi.png, id=214, 3976.8575pt x 1791.69376pt>
 File: ps/del_redi.png Graphic file (type png)
 <use ps/del_redi.png>
 Package pdftex.def Info: ps/del_redi.png  used on input line 362.
 (pdftex.def)             Requested size: 429.50636pt x 193.50551pt.
-<ps/mjj_redi.png, id=214, 3976.8575pt x 1804.7425pt>
+<ps/mjj_redi.png, id=215, 3976.8575pt x 1804.7425pt>
 File: ps/mjj_redi.png Graphic file (type png)
 <use ps/mjj_redi.png>
 Package pdftex.def Info: ps/mjj_redi.png  used on input line 370.
 (pdftex.def)             Requested size: 429.50636pt x 194.9148pt.
-<ps/m4l_redi.png, id=215, 3976.8575pt x 1946.27126pt>
+<ps/m4l_redi.png, id=216, 3976.8575pt x 1946.27126pt>
 File: ps/m4l_redi.png Graphic file (type png)
 <use ps/m4l_redi.png>
 Package pdftex.def Info: ps/m4l_redi.png  used on input line 378.
 (pdftex.def)             Requested size: 429.50636pt x 210.2001pt.
- [15 </mnt/SSD/VBS/tex/ps/unfold_demo_bayes.png>] [16 </mnt/SSD/VBS/tex/ps/del_redi.png>] [17 </mnt/SSD/VBS/tex/ps/mjj_redi.png>] (/mnt/SSD/VBS/tex/essey.bbl [18 </mnt/SSD/VBS/tex/ps/m4l_redi.png>] [19] [20])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 416.
+ [15 </mnt/SSD/VBS2/tex/ps/unfold_demo_bayes.png>] [16 </mnt/SSD/VBS2/tex/ps/del_redi.png>] [17 </mnt/SSD/VBS2/tex/ps/mjj_redi.png>]
+Overfull \hbox (13.6293pt too wide) in paragraph at lines 427--427
+[]|$\OML/cmm/m/it/12 ^^O[]W[]W[]W[]$| 
+ []
+
+
+Overfull \hbox (13.6293pt too wide) in paragraph at lines 427--427
+[]|$\OML/cmm/m/it/12 ^^O[][]W[]W[]$| 
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 427--427
+[][] 
+ []
+
+(/mnt/SSD/VBS2/tex/essey.bbl [18 </mnt/SSD/VBS2/tex/ps/m4l_redi.png>] [19] [20])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 434.
  [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 416.
- (/mnt/SSD/VBS/tex/essey.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 416.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 416.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 434.
+ (/mnt/SSD/VBS2/tex/essey.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 434.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 434.
 Package rerunfilecheck Info: File `essey.out' has not changed.
 (rerunfilecheck)             Checksum: F7A31B9CD4E8A6AD527EACC8118C6911;591.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 416.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 434.
  ) 
 Here is how much of TeX's memory you used:
- 8302 strings out of 492167
- 123355 string characters out of 6131558
- 235646 words of memory out of 5000000
+ 8303 strings out of 492167
+ 123386 string characters out of 6131559
+ 235686 words of memory out of 5000000
  12482 multiletter control sequences out of 15000+600000
  22639 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,19n,42p,668b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,19n,42p,669b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on /mnt/SSD/VBS/tex/essey.pdf (21 pages, 5426378 bytes).
+Output written on /mnt/SSD/VBS2/tex/essey.pdf (21 pages, 5429129 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
+ 336 PDF objects out of 1000 (max. 8388607)
+ 274 compressed objects within 3 object streams
+ 75 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

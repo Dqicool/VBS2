@@ -9,7 +9,7 @@ UNFOLD_COMP_FLAG = -g -Wall -rdynamic -fPIC -fPIE -pthread -std=c++17 -m64 -DHAV
 UNFOLD_COMP_INCL = -I/mnt/SSD/VBS2/RooUnfold/src/ -I/mnt/SSD/VBS2/RooUnfold -I/mnt/SSD/VBS2
 
 UNFOLD_LINK_FLAG =  -g -m64 -rdynamic
-UNFOLD_LINK_LIBS =  -L/mnt/SSD/VBS2/RooUnfold/ -lRooUnfold_static  -L/usr/lib/root -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -lROOTDataFrame -pthread -lm -ldl -rdynamic -lUnfold -lRooFit -lRooFitCore -lThread -lMinuit -lFoam -lMathMore -lHtml
+UNFOLD_LINK_LIBS =  -L/mnt/SSD/VBS2/RooUnfold/ -lRooUnfold_static  -L/usr/lib/root -lGenVector -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lMathMore -lThread -lMultiProc -lROOTDataFrame -pthread -lm -ldl -rdynamic -lUnfold -lRooFit -lRooFitCore -lThread -lMinuit -lFoam -lHtml
 
 ana: src/analyse.cpp libs/genAna.h
 	$(CXX) $(ROOTFLAGS) -g src/analyse.cpp -o build/analyse $(ROOTLIBS) $(ROOTINC)

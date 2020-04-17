@@ -38,6 +38,23 @@
 
 #define Z_MASS 91.1876e3
 #define GeV 1e3
+
+TH1* devideBinW(TH1* h){
+    uint nbins = h->GetNbinsX();
+    h->SetBinContent(0,0);
+    h->SetBinContent(nbins+1,0);
+    h->SetBinError(0,0);
+    h->SetBinError(nbins+1,0);
+    for(uint i = 1;i <= nbins;i++){
+        double ibinw = h->GetBinWidth(i);
+        double ibinc = h->GetBinContent(i) / ibinw;
+        double ibine = h->GetBinError(i) / ibinw;
+        h->SetBinContent(i, ibinc);
+        h->SetBinError(i, ibine);
+    }
+    return (TH1*)h->Clone();
+}
+
 namespace qidong{
     using namespace ROOT::Math;
     typedef std::vector<PtEtaPhiMVector> FourMomenta;

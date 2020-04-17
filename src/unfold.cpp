@@ -1,39 +1,5 @@
-#include <TROOT.h>
-#include <TH1.h>
-#include <TFile.h>
-#include <TTree.h>
-#include <TCanvas.h>
-#include "vector"
-#include <TMath.h>
-#include <iostream>
-#include <string.h>
-#include <ROOT/RDataFrame.hxx>
-#include <Math/GenVector/LorentzVector.h>
-#include <Math/GenVector/PtEtaPhiM4D.h>
-#include <Math/GenVector/PtEtaPhiM4Dfwd.h>
-#include <Math/Vector4Dfwd.h>
-#include<Math/Vector3Dfwd.h>
-#include<Math/GenVector/Boost.h>
-#include <TChain.h>
-#include<TROOT.h>
-#include<TStyle.h>
-#include<TLatex.h>
-
-#include "TMatrixD.h"
-#include "TVectorD.h"
-#include "TMath.h"
-#include "Math/Point3D.h"
-#include "Math/Vector3D.h"
-#include "Math/Vector4D.h"
-#include "Math/GenVector/Rotation3D.h"
-#include "Math/GenVector/EulerAngles.h"
-#include "Math/GenVector/AxisAngle.h"
-#include "Math/GenVector/Quaternion.h"
-#include "Math/GenVector/LorentzRotation.h"
-#include "Math/GenVector/Boost.h"
-#include "Math/GenVector/Transform3D.h"
-#include "Math/GenVector/Plane3D.h"
-#include "Math/GenVector/VectorUtil.h"
+#include "libs/genAna.h"
+#include "libs/ErrorProp.h"
 
 #include <RooUnfoldResponse.h>
 #include <RooUnfoldBayes.h>
@@ -47,23 +13,9 @@
 #define UNFLOLDDATA
 using namespace std;
 
-TH1* devideBinW(TH1* h){
-    uint nbins = h->GetNbinsX();
-    h->SetBinContent(0,0);
-    h->SetBinContent(nbins+1,0);
-    h->SetBinError(0,0);
-    h->SetBinError(nbins+1,0);
-    for(uint i = 1;i <= nbins;i++){
-        double ibinw = h->GetBinWidth(i);
-        double ibinc = h->GetBinContent(i) / ibinw;
-        double ibine = h->GetBinError(i) / ibinw;
-        h->SetBinContent(i, ibinc);
-        h->SetBinError(i, ibine);
-    }
-    return (TH1*)h->Clone();
-}
 
-void distUnfold(const char* dist, const char* labeltex, TH1D* h_data, const char* outf, double ymin, double ymax)
+
+void distUnfold(const char* dist, TH1D* h_data, const char* outf, double ymin, double ymax, const char* labelx, const char* labely)
 {   
 
     TH1::SetDefaultSumw2();
@@ -129,59 +81,69 @@ void distUnfold(const char* dist, const char* labeltex, TH1D* h_data, const char
         out->Close();
     //plot
         auto* c1 = new TCanvas("c1","",1200,1200);
+                c1->SetMargin(0.15,0.05,0.1,0.05);
                 //h_unfold->SetAxisRange(0,25,"Y");
                 h_unfold->SetTitle("");
-                h_unfold->SetLineColorAlpha(kBlack,0);
-                h_unfold->SetMarkerColor(kBlack);
-                h_unfold->SetFillColorAlpha(kBlack, 0.2);
-                h_unfold->SetMarkerStyle(kFullCircle);
-                h_unfold->SetMarkerSize(2.0);
-                h_unfold->SetLineWidth(2.0);
-                h_unfold->GetXaxis()->SetTitle(labeltex);
-                h_unfold->GetYaxis()->SetTitle("Events");
-                h_unfold->SetAxisRange(ymin,ymax,"Y");
                 h_unfold->SetStats(0);
+                h_unfold->SetAxisRange(ymin,ymax,"Y");
+                h_unfold->SetMarkerStyle(kFullCircle);
+                h_unfold->SetMarkerSize(2.);
+                h_unfold->SetLineWidth(4.);
+                h_unfold->SetLineColor(kBlack);
+                h_unfold->SetMarkerColor(kBlack);
+                h_unfold->GetXaxis()->SetTitle(labelx);
+                h_unfold->GetXaxis()->SetTitleFont(22);
+                //h_unfold->GetYaxis()->SetTitle("#frac{d#sigma}{d#theta_{1}} [ fb / rad ]");
+                h_unfold->GetYaxis()->SetTitle(labely);
+                h_unfold->GetYaxis()->SetTitleFont(22);
+                h_unfold->GetYaxis()->SetTitleOffset(1.5);
                 auto h_diff_unf = devideBinW(h_unfold);
                 h_diff_unf->Draw("E1");
-                h_diff_unf->Draw("E2 same");
+                //h_diff_unf->Draw("E2 same");
 
-                h_data->SetLineColorAlpha(kBlack,0);
-                h_data->SetMarkerColor(kBlue);
-                h_data->SetFillColorAlpha(kBlue, 0.1);
-                h_data->SetMarkerStyle(kFullSquare);
-                h_data->SetMarkerSize(2.0);
-                h_data->SetLineWidth(2.0);
-                h_data->SetStats(0);
-                auto h_diff_data = devideBinW(h_data);
-                h_diff_data->Draw("same E1");
-                h_diff_data->Draw("E2 same");
+                // h_data->SetLineColorAlpha(kBlack,0);
+                // h_data->SetMarkerColor(kBlue);
+                // h_data->SetFillColorAlpha(kBlue, 0.1);
+                // h_data->SetMarkerStyle(kFullSquare);
+                // h_data->SetMarkerSize(2.0);
+                // h_data->SetLineWidth(2.0);
+                // h_data->SetStats(0);
+                // auto h_diff_data = devideBinW(h_data);
+                // h_diff_data->Draw("same E1");
+                // h_diff_data->Draw("E2 same");
 
-                h_meas->SetLineColor(kBlue);
-                h_meas->SetLineWidth(2);
-                h_meas->Draw("SAME HIST");
-                h_meas->SetStats(0);
-                auto h_diff_meas = devideBinW(h_meas);
-                h_diff_meas->SetFillStyle(3004);
-                h_diff_meas->SetFillColorAlpha(kBlue,1);
+                // h_meas->SetLineColor(kBlue);
+                // h_meas->SetLineWidth(2);
+                // h_meas->Draw("SAME HIST");
+                // h_meas->SetStats(0);
+                // auto h_diff_meas = devideBinW(h_meas);
+                // h_diff_meas->SetFillStyle(3004);
+                // h_diff_meas->SetFillColorAlpha(kBlue,1);
                 
-                h_diff_meas->Draw("SAME E2");
+                // h_diff_meas->Draw("SAME E2");
 
-                h_true->SetLineColor(kBlack);
-                h_true->SetLineWidth(2);
-                h_true->Draw("SAME HIST");
+                h_true->SetLineColor(kBlue);
+                h_true->SetFillColorAlpha(kBlue,0);
+                h_true->SetLineWidth(4);
+                h_true->SetLineStyle(kDashDotted);
                 h_true->SetStats(0);
                 auto h_diff_true = devideBinW(h_true);
-                h_diff_true->SetFillStyle(3004);
-                h_diff_true->SetFillColorAlpha(kBlack,1);
-                h_diff_true->Draw("SAME E2");
+                h_diff_true->Draw("SAME HIST");
                 
 
-                TLegend *legend = new TLegend(0.7, 0.7, 0.9, 0.9);
-                legend->AddEntry(h_diff_unf,"Unfold","lepf");
-                legend->AddEntry(h_diff_true,"Truth Pred","lepf");
-                legend->AddEntry(h_diff_data, "Data","lepf");
-                legend->AddEntry(h_diff_meas, "Detec Pred","lepf");
+                TLegend *legend = new TLegend(0.65, 0.75, 0.94, 0.94);
+                legend->AddEntry(h_diff_unf,"Reconstructed data","lepf");
+                legend->AddEntry(h_diff_true,"Truth level prediction","lepf");
+                legend->SetLineColorAlpha(kBlack,0);
+                legend->SetTextFont(22);
                 legend->Draw();
+
+                TLatex tex;
+                tex.SetTextAlign(11);
+                tex.SetTextFont(22);
+                tex.SetTextSize(0.04);
+                tex.DrawLatex(0.9,28,"#sqrt{s} = 13 TeV");
+                tex.DrawLatex(0.9,26, "139 fb^{-1}");
             c1->SaveAs((&unfold_name[0]));
 
         auto* c2 = new TCanvas("c2","",2000,2000);
@@ -233,18 +195,18 @@ void distUnfold(const char* dist, const char* labeltex, TH1D* h_data, const char
 int main(){
     TFile* inphijj = TFile::Open("output/rebin_out/dPhiJJ.root","read");
     auto datadelphijj  = (TH1D*)inphijj->Get("h_jj_dphi_pass_cutdat");
-    distUnfold("jj_dphi", "#Delta#phi_{jj} [rad]", datadelphijj, "output/unfold_out/dphijj.root", 0, 0.6);
+    distUnfold("jj_dphi", datadelphijj, "output/unfold_out/dphijj.root", 0, 0.8, "#Delta#phi_{jj} [ rad ]", "#frac{d#sigma}{d#Delta#phi_{jj}} [ fb / rad ]");
 
     TFile* inat1 = TFile::Open("output/rebin_out/at1.root","read");
     auto dataat1 = (TH1D*)inat1->Get("h_Angle_theta1_pass_cutdat");
-    distUnfold("Angle_theta1", "#theta 1 [rad]", dataat1,"output/unfold_out/at1.root", 0, 4);
+    distUnfold("Angle_theta1", dataat1,"output/unfold_out/at1.root", 0, 4, "#theta_{1} [ rad ]", "#frac{d#sigma}{d#theta_{1}} [ fb / rad ]");
 
     TFile* inat2 = TFile::Open("output/rebin_out/at2.root","read");
     auto dataat2 = (TH1D*)inat2->Get("h_Angle_theta2_pass_cutdat");
-    distUnfold("Angle_theta2", "#theta 2 [rad]", dataat2, "output/unfold_out/at2.root", 0, 4);
+    distUnfold("Angle_theta2", dataat2, "output/unfold_out/at2.root", 0, 4, "#theta_{2} [ rad ]", "#frac{d#sigma}{d#theta_{2}} [ fb / rad ]");
 
     TFile* inphi0 = TFile::Open("output/rebin_out/ap0.root","read");
     auto dataphi0 = (TH1D*)inphi0->Get("h_Angle_phi0_pass_cutdat");
-    distUnfold("Angle_phi0", "#phi 0", dataphi0, "output/unfold_out/ap0.root", 0, 0.6);
+    distUnfold("Angle_phi0", dataphi0, "output/unfold_out/ap0.root", 0, 0.6, "#phi_{0} [ rad ]", "#frac{d#sigma}{d#phi_{0}} [ fb / rad ]");
 }
 
