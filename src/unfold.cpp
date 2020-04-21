@@ -9,6 +9,8 @@
 #include<THashList.h>
 #include"libs/ErrorProp.h"
 
+#define PRWLUMI (36.21 + 58.45 + 44.31)
+
 //#define UNFOLDSELF
 #define UNFLOLDDATA
 using namespace std;
@@ -57,23 +59,36 @@ void distUnfold(const char* dist, TH1D* h_data, const char* outf, double ymin, d
         auto h_meas = resp_use.Hmeasured();
         auto h_true = resp_use.Htruth();
         auto h_fake = resp_use.Hfakes();
+        auto h_toy  = (TH1*)h_meas->Clone("h_toy");
+        h_toy->Scale(PRWLUMI);
+        for(int i = 0; i<=(h_toy->GetNbinsX()+1); i++){
+            h_toy->SetBinError(i, std::sqrt(h_toy->GetBinContent(i)));
+        }
+        h_toy->Scale(1./PRWLUMI);
 
-        //RooUnfoldBayes unfoldself(&resp_use, h_meas, 2);
+        RooUnfoldBayes unfoldself(&resp_use, h_toy, 1);
         RooUnfoldBayes unfolddata(&resp_use, h_data, 1);
         auto cov = unfolddata.Ereco(RooUnfold::kCovariance);
+        auto cov_toy = unfoldself.Ereco(RooUnfold::kCovariance);
         TH1D* h_unfold= (TH1D*) unfolddata.Hreco(RooUnfold::kCovariance);
         unfolddata.PrintTable (std::cout);
 
     //save 
         string sn_reco = (string)"h_" + (string)dist + (string)"_reco";
         string sn_true = (string)"h_" + (string)dist + (string)"_true";
+        string sn_toy  = (string)"h_" + (string)dist + (string)"_toy";
 
         TFile* out = TFile::Open(outf, "recreate");
         
         auto h_cov = new TH2D(cov);
+        auto h_cov_toy = new TH2D(cov_toy);
         h_unfold->Clone(sn_reco.data())->Write();
         h_true->Clone(sn_true.data())->Write();
         h_cov->Clone("h_Cov")->Write();
+        h_cov_toy->Clone("h_Cov_toy")->Write();
+        //h_cov_toy->Clone(sn_toy.data())->Write();
+        (unfoldself.Hreco())->Clone(sn_toy.data())->Write();
+        //h_toy->Clone(sn_toy.data())->Write();
         string pic_name = "plots/unfold/" + (string)(const char*)dist;
         auto unfold_name = pic_name + "_unfold.png";
         auto resp_name = pic_name + "_resp.png";

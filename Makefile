@@ -53,3 +53,6 @@ limitSet: src/limitSet.cpp
 
 test: src/test.cpp
 	$(CXX) $(ROOTFLAGS) -g src/test.cpp -o build/test $(ROOTLIBS) $(ROOTINC)
+
+drawLim: src/drawLim.cpp
+	$(CXX) $(ROOTFLAGS) -g src/drawLim.cpp -o build/drawLim $(ROOTLIBS) $(ROOTINC)
