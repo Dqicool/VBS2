@@ -1,0 +1,69 @@
+
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Gaillard_1999}
+M.~K. Gaillard, P.~D. Grannis and F.~J. Sciulli, \emph{{T}he standard model of
+  particle physics},
+  \href{https://doi.org/10.1103/revmodphys.71.s96}{\emph{Rev. Mod. Phys}
+  {\bfseries 71} (1999) S96–S111}.
+
+\bibitem{Aad_2012}
+G.~Aad, T.~Abajyan, B.~Abbott, J.~Abdallah, S.~Abdel~Khalek, A.~Abdelalim
+  et~al., \emph{{O}bservation of a new particle in the search for the
+  {S}tandard {M}odel {H}iggs boson with the {ATLAS} detector at the {LHC}},
+  \href{https://doi.org/10.1016/j.physletb.2012.08.020}{\emph{Phys. Lett B}
+  {\bfseries 716} (2012) 1–29}.
+
+\bibitem{rauch2016vectorboson}
+M.~Rauch, \emph{Vector-{B}oson {F}usion and {V}ector-{B}oson {S}cattering},
+  2016.
+
+\bibitem{Evans_2008}
+L.~Evans and P.~Bryant, \emph{{LHC} machine},
+  \href{https://doi.org/10.1088/1748-0221/3/08/s08001}{\emph{J. Instrum}
+  {\bfseries 3} (2008) S08001}.
+
+\bibitem{dawson1999introduction}
+S.~Dawson, \emph{Introduction to {E}lectroweak {S}ymmetry {B}reaking},  1999.
+
+\bibitem{peccei1995cp}
+R.~D. Peccei, \emph{{CP} {V}iolation: {A} {T}heoretical {R}eview},  1995.
+
+\bibitem{Aad_2014}
+G.~Aad, B.~Abbott, J.~Abdallah, S.~Abdel~Khalek, O.~Abdinov, R.~Aben et~al.,
+  \emph{{E}vidence for {E}lectroweak {P}roduction of ${W}^{\pm}{W}^{\pm}jj$ in
+  $pp$ {C}ollisions at $\sqrt{s} = 8\ {T}e{V}$ with the {ATLAS} detector},
+  \href{https://doi.org/10.1103/physrevlett.113.141803}{\emph{Phys. Rev. Lett}
+  {\bfseries 113} (2014) }.
+
+\bibitem{Chatrchyan:2008aa}
+{\scshape CMS} collaboration, \emph{{{T}he {CMS} {E}xperiment at the {CERN}
+  {LHC}}}, \href{https://doi.org/10.1088/1748-0221/3/08/S08004}{\emph{J.
+  Instrum} {\bfseries 3} (2008) S08004}.
+
+\bibitem{Sirunyan_2018}
+A.~Sirunyan, A.~Tumasyan, W.~Adam, F.~Ambrogi, E.~Asilar, T.~Bergauer et~al.,
+  \emph{{O}bservation of electroweak production of same-sign $w$ boson pairs in
+  the two jet and two same-sign lepton final state in proton-proton collision
+  at $\sqrt{s}=13$ {T}e{V}},
+  \href{https://doi.org/10.1103/physrevlett.120.081801}{\emph{Phys. Rev. Lett}
+  (2018) }.
+
+\bibitem{ATLAS-CONF-2019-033}
+{\scshape ATLAS Collaboration} collaboration, \emph{{{O}bservation of
+  electroweak production of two jets in association with a ${Z}$-boson pair in
+  $pp$ collisions at $\sqrt{s} = 13$ {T}eV with the {ATLAS} detector}},  Tech.
+  Rep. ATLAS-CONF-2019-033, CERN, Geneva, Jul, 2019.
+
+\bibitem{Aad:2008zzm}
+{\scshape ATLAS} collaboration, \emph{{The {ATLAS} {E}xperiment at the CERN
+  {L}arge {H}adron {C}ollider}},
+  \href{https://doi.org/10.1088/1748-0221/3/08/S08003}{\emph{J. Instrum}
+  {\bfseries 3} (2008) S08003}.
+
+\bibitem{Brivio_2017}
+I.~Brivio, Y.~Jiang and M.~Trott, \emph{The {SMEFT}sim package, theory and
+  tools}, \href{https://doi.org/10.1007/jhep12(2017)070}{\emph{J. High Energy
+  Phys} {\bfseries 2017} (2017) }.
+
+\end{thebibliography}\endgroup

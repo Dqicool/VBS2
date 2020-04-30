@@ -3,7 +3,6 @@ make limitSet &
 make drawLim &
 wait
 SECONDS=0
-build/limitSet as > /dev/null & 
 build/limitSet od > /dev/null &
 build/limitSet ee > /dev/null &
 build/limitSet ed > /dev/null &
