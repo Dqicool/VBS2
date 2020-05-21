@@ -174,6 +174,34 @@ void testdpj(){
     c.SaveAs("dpjj.png");
 }
 
+void mmm(){
+    ROOT::RDataFrame qcdf("SM4L_Nominal", {"data/v014/mc16_13TeV.345706.Sherpa_222_NNPDF30NNLO_ggllll_130M4l.deriv.DAOD_HIGG2D1.e6213_s3126_r10201_p3872.root", 
+                                             "data/v014/mc16_13TeV.345706.Sherpa_222_NNPDF30NNLO_ggllll_130M4l.deriv.DAOD_HIGG2D1.e6213_s3126_r10724_p3872.root",
+                                             "data/v014/mc16_13TeV.345706.Sherpa_222_NNPDF30NNLO_ggllll_130M4l.deriv.DAOD_HIGG2D1.e6213_s3126_r9364_p3872.root",
+
+                                             "data/v014/mc16_13TeV.345708.Sherpa_222_NNPDF30NNLO_ggllllNoHiggs_0M4l130.deriv.DAOD_HIGG2D1.e6213_e5984_s3126_r10201_r10210_p3872.root",
+                                             "data/v014/mc16_13TeV.345708.Sherpa_222_NNPDF30NNLO_ggllllNoHiggs_0M4l130.deriv.DAOD_HIGG2D1.e6213_e5984_s3126_r10724_r10726_p3872.root",
+                                             "data/v014/mc16_13TeV.345708.Sherpa_222_NNPDF30NNLO_ggllllNoHiggs_0M4l130.deriv.DAOD_HIGG2D1.e6213_e5984_s3126_r9364_r9315_p3872.root",
+
+                                             "data/v014/mc16_13TeV.364250.Sherpa_222_NNPDF30NNLO_llll.deriv.DAOD_HIGG2D1.e5894_s3126_r10201_p3872.root",
+                                             "data/v014/mc16_13TeV.364250.Sherpa_222_NNPDF30NNLO_llll.deriv.DAOD_HIGG2D1.e5894_s3126_r10724_p3872.root",
+                                             "data/v014/mc16_13TeV.364250.Sherpa_222_NNPDF30NNLO_llll.deriv.DAOD_HIGG2D1.e5894_s3126_r9364_p3872.root"});
+
+    ROOT::RDataFrame ewf("SM4L_Nominal", {"data/v014/mc16_13TeV.364364.Sherpa_222_NNPDF30NNLO_lllljj_EW6_noHiggs.deriv.DAOD_HIGG2D1.e6611_e5984_a875_r10201_r10210_p3872.root", 
+                                            "data/v014/mc16_13TeV.364364.Sherpa_222_NNPDF30NNLO_lllljj_EW6_noHiggs.deriv.DAOD_HIGG2D1.e6611_e5984_a875_r10724_r10726_p3872.root",
+                                            "data/v014/mc16_13TeV.364364.Sherpa_222_NNPDF30NNLO_lllljj_EW6_noHiggs.deriv.DAOD_HIGG2D1.e6611_e5984_a875_r9364_r9315_p3872.root",
+                                            "data/v014/mc16_13TeV.346228.PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_ZZ4lep_notau.deriv.DAOD_HIGG2D1.e7249_s3126_r10201_p3872.root",
+                                            "data/v014/mc16_13TeV.346228.PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_ZZ4lep_notau.deriv.DAOD_HIGG2D1.e7249_s3126_r10724_p3872.root",
+                                            "data/v014/mc16_13TeV.346228.PowhegPy8EG_NNPDF30_AZNLOCTEQ6L1_VBFH125_ZZ4lep_notau.deriv.DAOD_HIGG2D1.e7249_s3126_r9364_p3872.root"});
+    
+    auto sumqcd = qcdf.Sum("weight").GetValue()
+    auto sumew  =  ewf.Sum("weight").GetValue()
+
+    std::cout<<sumqcd<<std::endl;
+    std::cout<<sumqcd<<std::endl;
+
+}
+
 
 int main(){
     testat1();

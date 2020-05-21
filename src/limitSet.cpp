@@ -49,6 +49,14 @@ double getMin(TH2D* h){
     return ret;
 }
 
+double getMin1d(TH1D* h){
+    double ret = 1e20;
+    for(int i = 1; i <= h->GetNbinsX();i++){
+            if(h->GetBinContent(i) < ret) ret = h->GetBinContent(i);
+    }
+    return ret;
+}
+
 void     limSet(const char* fn_unf, const char* fn_np, 
                 const char* hn_cov, const char* hn_sm, const char* hn_reco,
                 const char* hn_c1_np, const char* hn_c1_np2, double c1min, int c1n, double c1max,
@@ -60,6 +68,7 @@ void     limSet(const char* fn_unf, const char* fn_np,
 
     double lim1 = ROOT::MathMore::chisquared_quantile(CL1, ndf);
     double lim2 = ROOT::MathMore::chisquared_quantile(CL2, ndf);
+    std::cout<<lim1<<"\t"<<lim2<<std::endl;
     double c1int = (c1max - c1min) / c1n;
     double c2int = (c2max - c2min) / c2n;
     TFile* inunf = TFile::Open(fn_unf, "read");
@@ -79,8 +88,6 @@ void     limSet(const char* fn_unf, const char* fn_np,
     TH2D* h_chi2 = new TH2D("chi2_hist", "",c1n+1,c1min - c1int/2,c1max + c1int/2, c2n+1, c2min - c2int/2, c2max + c2int/2);
     TH2D* h_asy  = new TH2D("asy_hist",  "",c1n+1,c1min - c1int/2,c1max + c1int/2, c2n+1, c2min - c2int/2, c2max + c2int/2);
     for (double i = c1min; i<=c1max+EPS; i+=c1int){
-        std::system("clear");
-        std::cout<<(i - c1min)/(c1max - c1min)*100<<"%"<<std::endl;
         for (double j = c2min; j<=c2max+EPS; j+=c2int){
             auto h_loop_CWtil_NP = (TH1D*)(h_CWtil_NP->Clone());
             auto h_loop_CWtil_NP2 = (TH1D*)(h_CWtil_NP2->Clone());
@@ -131,9 +138,9 @@ void     limSet(const char* fn_unf, const char* fn_np,
             h_lim1->SetBinContent(i,j, 0);
             h_lim2->SetBinContent(i,j, 0);
             if (h_chi2->GetBinContent(i,j) < lim1)
-                h_lim1->SetBinContent(i,j, 1);
+                h_lim1->SetBinContent(i,j, 0.35);
             if(h_chi2->GetBinContent(i,j) < lim2)
-                h_lim2->SetBinContent(i,j, 2);
+                h_lim2->SetBinContent(i,j, -0.35);
         }
     }
     
@@ -173,10 +180,87 @@ void     limSet(const char* fn_unf, const char* fn_np,
     out->Close();
 }
 
+void     limSet1d(const char* fn_unf, const char* fn_np, 
+                const char* hn_cov, const char* hn_sm, const char* hn_reco,
+                const char* hn_c_np, const char* hn_c_np2, double cmin, int cn, double cmax,
+                uint ndf, double CL1, double CL2){
+
+    double lim1 = ROOT::MathMore::chisquared_quantile(CL1, ndf);
+    
+    double lim2 = ROOT::MathMore::chisquared_quantile(CL2, ndf);
+    //std::cout<<lim1<<"\t"<<lim2<<std::endl;
+    double cint = (cmax - cmin) / cn;
+    TFile* inunf = TFile::Open(fn_unf, "read");
+    TFile* inNP  = TFile::Open(fn_np, "read");
+
+    TH2D* h_cov = (TH2D*)inunf->Get(hn_cov);
+    TH1D* h_SM  = (TH1D*)inunf->Get(hn_sm);
+    TH1D* h_data = (TH1D*)inunf->Get(hn_reco);
+
+    TH1D* h_NP = (TH1D*)inNP->Get(hn_c_np);
+    TH1D* h_NP2 = (TH1D*)inNP->Get(hn_c_np2);
+
+    TH1D* h_chi2 = new TH1D("chi2_hist", "",cn+1,cmin - cint/2,cmax + cint/2);
+    TH1D* h_asy  = new TH1D("asy_hist",  "",cn+1,cmin - cint/2,cmax + cint/2);
+    for (double i = cmin; i<=cmax+EPS; i+=cint){
+        //std::cout<<(i - cmin)/(cmax - cmin)*100<<"%"<<std::endl;
+        auto h_loop_NP = (TH1D*)(h_NP->Clone());
+        auto h_loop_NP2 = (TH1D*)(h_NP2->Clone());
+
+        auto h_loop_SM = (TH1D*)(h_SM->Clone());
+        auto h_loop_data = (TH1D*)(h_data->Clone());
+
+        h_loop_NP->Scale(std::pow(i/5.,2));
+        h_loop_NP2->Scale(i/5.);
+
+        h_loop_SM->Add(h_loop_NP);
+        h_loop_SM->Add(h_loop_NP2);
+        h_loop_SM->Add(h_loop_NP);
+        h_loop_SM->Add(h_loop_NP2);
+        h_chi2->Fill(i, getChi2(h_cov, h_loop_SM, h_data));
+
+        h_loop_SM->Delete();
+        h_loop_data->Delete();
+        h_loop_NP->Delete();
+        h_loop_NP2->Delete();
+    }
+
+    TH1D* h_lim1  = (TH1D*)h_chi2->Clone();
+    TH1D* h_lim2  = (TH1D*)h_chi2->Clone();
+    double mini = getMin1d(h_chi2);
+    for(int i = 1; i <= h_chi2->GetNbinsX();i++){
+            h_chi2->SetBinContent(i, h_chi2->GetBinContent(i) - mini);
+            h_lim1->SetBinContent(i, 0);
+            h_lim2->SetBinContent(i, 0);
+            if (h_chi2->GetBinContent(i) < lim1)
+                h_lim1->SetBinContent(i, 0.35);
+            if(h_chi2->GetBinContent(i) < lim2)
+                h_lim2->SetBinContent(i, -0.35);
+    }
+    std::cout<<hn_c_np<<std::endl;
+    for(int i = 2; i <= h_chi2->GetNbinsX();i++){
+        if(h_lim1->GetBinContent(i)-h_lim1->GetBinContent(i-1) != 0){
+            std::cout<<"lim1\t"<<cmin+(cmax - cmin)/cn*i<<std::endl;
+        }
+    }
+
+     for(int i = 2; i <= h_chi2->GetNbinsX();i++){
+        if(h_lim2->GetBinContent(i)-h_lim2->GetBinContent(i-1) != 0){
+            std::cout<<"lim2\t"<<cmin+(cmax - cmin)/cn*i<<std::endl;
+        }
+    }
+    TCanvas c1("deby", "deby", 2000,2000);
+        h_chi2->Draw();
+    c1.SaveAs(((std::string)hn_reco + ".png").data());
+
+
+}
+
 
 int main(int argc, const char** argv){
     //CWt CHWBt phi
     int reso = 1000;
+    int reso1d = 10000;
     std::cout<<argv[0]<<std::endl;
     std::cout<<argv[1]<<std::endl;
     //observed limits
@@ -311,5 +395,120 @@ int main(int argc, const char** argv){
                 "plots/limit/e_CHW_CHWB_at1_chi2.png", "plots/limit/e_CHW_CHWB_at1_lim.png", "output/limit_out/e_CHW_CHWB_at1.root",
                 "C_{HW}", "C_{HWB}", "#Delta#chi^{2}",
                 "Calculated using #theta_{1} distribution");
+        }
+        if ((std::string)(argv[1]) == (std::string)"1d"){
+        // std::cout<<"--------CHW----------"<<std::endl;
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+        //         "Angle_theta1_cut_h_CHW_NP",        "Angle_theta1_cut_h_CHW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+        //         "jj_dphi_cut_h_CHW_NP",        "jj_dphi_cut_h_CHW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+        //         "Angle_theta1_cut_h_CHW_NP",        "Angle_theta1_cut_h_CHW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+        //         "jj_dphi_cut_h_CHW_NP",        "jj_dphi_cut_h_CHW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        // std::cout<<"---------------------"<<std::endl;
+
+        // std::cout<<"---------CW----------"<<std::endl;
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+        //         "Angle_theta1_cut_h_CW_NP",        "Angle_theta1_cut_h_CW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+        //         "jj_dphi_cut_h_CW_NP",        "jj_dphi_cut_h_CW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+        //         "Angle_theta1_cut_h_CW_NP",        "Angle_theta1_cut_h_CW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+        //         "jj_dphi_cut_h_CW_NP",        "jj_dphi_cut_h_CW_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        // std::cout<<"---------------------"<<std::endl;
+
+        std::cout<<"--------CHWB----------"<<std::endl;
+            limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+                "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+                "Angle_theta1_cut_h_CHWB_NP",        "Angle_theta1_cut_h_CHWB_NP2",      -20.0, reso1d, 20.0,
+                1, 0.68, 0.95);
+            limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+                "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+                "jj_dphi_cut_h_CHWB_NP",        "jj_dphi_cut_h_CHWB_NP2",      -20.0, reso1d, 20.0,
+                1, 0.68, 0.95);
+            limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+                "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+                "Angle_theta1_cut_h_CHWB_NP",        "Angle_theta1_cut_h_CHWB_NP2",      -20.0, reso1d, 20.0,
+                1, 0.68, 0.95);
+            limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+                "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+                "jj_dphi_cut_h_CHWB_NP",        "jj_dphi_cut_h_CHWB_NP2",      -20.0, reso1d, 20.0,
+                1, 0.68, 0.95);
+        std::cout<<"---------------------"<<std::endl;
+            
+        // std::cout<<"---------CHWBt---------"<<std::endl;
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+        //         "Angle_theta1_cut_h_CHWBtil_NP",        "Angle_theta1_cut_h_CHWBtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+        //         "jj_dphi_cut_h_CHWBtil_NP",        "jj_dphi_cut_h_CHWBtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+        //         "Angle_theta1_cut_h_CHWBtil_NP",        "Angle_theta1_cut_h_CHWBtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+        //         "jj_dphi_cut_h_CHWBtil_NP",        "jj_dphi_cut_h_CHWBtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        // std::cout<<"---------------------"<<std::endl;
+
+        // std::cout<<"---------CHWt----------"<<std::endl;
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+        //         "Angle_theta1_cut_h_CHWtil_NP",        "Angle_theta1_cut_h_CHWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+        //         "jj_dphi_cut_h_CHWtil_NP",        "jj_dphi_cut_h_CHWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+        //         "Angle_theta1_cut_h_CHWtil_NP",        "Angle_theta1_cut_h_CHWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+        //         "jj_dphi_cut_h_CHWtil_NP",        "jj_dphi_cut_h_CHWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        // std::cout<<"-----------------------"<<std::endl;
+
+        // std::cout<<"---------CWt----------"<<std::endl;
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov",                         "h_Angle_theta1_true",               "h_Angle_theta1_reco", 
+        //         "Angle_theta1_cut_h_CWtil_NP",        "Angle_theta1_cut_h_CWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov",                         "h_jj_dphi_true",               "h_jj_dphi_reco", 
+        //         "jj_dphi_cut_h_CWtil_NP",        "jj_dphi_cut_h_CWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/at1.root", "output/rebin_out/at1.root",
+        //         "h_Cov_toy",                         "h_Angle_theta1_true",               "h_Angle_theta1_toy", 
+        //         "Angle_theta1_cut_h_CWtil_NP",        "Angle_theta1_cut_h_CWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        //     limSet1d("output/unfold_out/dphijj.root", "output/rebin_out/dPhiJJ.root",
+        //         "h_Cov_toy",                         "h_jj_dphi_true",               "h_jj_dphi_toy", 
+        //         "jj_dphi_cut_h_CWtil_NP",        "jj_dphi_cut_h_CWtil_NP2",      -10.0, reso1d, 10.0,
+        //         1, 0.68, 0.95);
+        // std::cout<<"----------------------"<<std::endl;
         }
 }

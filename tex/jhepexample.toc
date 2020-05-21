@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
+\contentsline {section}{\numberline {2}Recap}{2}{section.2}% 
+\contentsline {section}{\numberline {3}ZZjj differential cross section}{2}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}ZZjj processes and backgrounds}{2}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Data and Simulations}{4}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Events selection}{5}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Chosen Observables}{6}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Unfolding}{7}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.6}Results}{8}{subsection.3.6}% 
+\contentsline {section}{\numberline {4}Reinterpretation in an effective field theory}{9}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}EFT theory}{9}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}particle-level EFT event generation}{10}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Limit setting procedure}{11}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}Results}{13}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Discussion}{14}{section.5}% 

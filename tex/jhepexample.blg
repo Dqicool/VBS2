@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: jhepexample.aux
+The style file: JHEP.bst
+Database file #1: bibli.bib
+You've used 46 entries,
+            2212 wiz_defined-function locations,
+            907 strings with 16907 characters,
+and the built_in function-call counts, 12684 in all, are:
+= -- 1263
+> -- 667
+< -- 2
++ -- 194
+- -- 148
+* -- 978
+:= -- 1913
+add.period$ -- 47
+call.type$ -- 46
+change.case$ -- 46
+chr.to.int$ -- 0
+cite$ -- 46
+duplicate$ -- 634
+empty$ -- 991
+format.name$ -- 148
+if$ -- 3285
+int.to.chr$ -- 0
+int.to.str$ -- 46
+missing$ -- 158
+newline$ -- 142
+num.names$ -- 41
+pop$ -- 103
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 523
+stack$ -- 0
+substring$ -- 372
+swap$ -- 323
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 72
+width$ -- 48
+write$ -- 445

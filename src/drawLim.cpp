@@ -27,7 +27,7 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     TCanvas c1("c1","c1",2000,2000);
     c1.SetMargin(0.15,0.15,0.15,0.15);
     h_lim1e->SetStats(0);
-    h_lim1e->SetAxisRange(0,2,"Z");
+    h_lim1e->SetAxisRange(-0.35,0.35,"Z");
     h_lim1e->SetContour(3);
     h_lim1e->GetXaxis()->SetTitle(xtitle);
     h_lim1e->GetYaxis()->SetTitle(ytitle);
@@ -36,7 +36,7 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     h_lim1e->SetLineColor(kBlue);
 
     h_lim2e->SetStats(0);
-    h_lim2e->SetAxisRange(0,2,"Z");
+    h_lim2e->SetAxisRange(-0.35,0.35,"Z");
     h_lim2e->SetContour(3);
     h_lim2e->GetXaxis()->SetTitle(xtitle);
     h_lim2e->GetYaxis()->SetTitle(ytitle);
@@ -45,7 +45,7 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     h_lim2e->SetLineColor(kBlue);
 
     h_lim1o->SetStats(0);
-    h_lim1o->SetAxisRange(0,2,"Z");
+    h_lim1o->SetAxisRange(-0.35,0.35,"Z");
     h_lim1o->SetContour(3);
     h_lim1o->GetXaxis()->SetTitle(xtitle);
     h_lim1o->GetYaxis()->SetTitle(ytitle);
@@ -54,7 +54,7 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     h_lim1o->SetLineColor(kRed);
 
     h_lim2o->SetStats(0);
-    h_lim2o->SetAxisRange(0,2,"Z");
+    h_lim2o->SetAxisRange(-0.35,0.35,"Z");
     h_lim2o->SetContour(3);
     //h_lim2->SetLineStyle(kDotted);
     h_lim2o->SetLineWidth(5);
@@ -68,8 +68,8 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     h_lim1o->Draw("CONT3 SAME");
 	if(((std::string)fn_limo).find((std::string)"phi") != std::string::npos){
 		h_asy->SetStats(0);
-		h_asy->GetZaxis()->SetTitle("#frac{#sigma_{+} - #sigma_{-}}{{#sigma_{+} - #sigma_{-}}");
-		h_asy->SetAxisRange(-0.5,0.5,"Z");
+		h_asy->GetZaxis()->SetTitle("A");
+		h_asy->SetAxisRange(-0.35,0.35,"Z");
 		h_asy->Draw("COLZ SAME");
 		h_lim2e->Draw("CONT3 SAME");
 		h_lim1e->Draw("CONT3 SAME");
@@ -85,6 +85,7 @@ void plotLim(   const char* fn_limo, const char* fn_lime,
     legend.AddEntry(h_lim2e, "95% expected limit", "l");
     legend.SetLineColorAlpha(kBlack, 0);
     legend.SetFillColorAlpha(kBlack, 0);
+    legend.SetTextColor(kWhite);
     legend.SetTextFont(22);
     legend.Draw();
 

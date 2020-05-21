@@ -3,6 +3,7 @@
 #include<cmath>
 #include<TLegend.h>
 #include<TLine.h>
+#include"libs/ErrorProp.h"
 
 enum MCType { SM, NPLinear, NPQuad };
 TH1* getPlot(const char* file, const char* plot, double eft_C, Color_t col, MCType types){
@@ -40,6 +41,45 @@ void drawRatio(const char* fSM, const char* fNP, const char* fNP2, const char* h
     TH1* h_SM  = getPlot(fSM,   hSM,    eftC, kRed,    SM);
     TH1* h_NP  = getPlot(fNP,   hNP,    eftC, kBlue,   NPQuad);
     TH1* h_NP2 = getPlot(fNP2,  hNP2,   eftC, kGreen,  NPLinear);
+    if((std::string)hSM == (std::string)"jj_truthBorn_dphi_cut_h"){
+        auto nbin = h_NP->GetNbinsX();
+        
+        double errxsNP, errxsNP2, errxsSM;
+        double xsEFTNP = h_NP->IntegralAndError(1, nbin, errxsNP);
+        double xsEFTNP2 =h_NP2->IntegralAndError(1, nbin, errxsNP2);
+        double xsEFT = xsEFTNP + xsEFTNP2;
+        double xsSM  = h_SM->IntegralAndError(1, nbin, errxsSM);
+        double errxsEFT = ErrAPlusB(errxsNP, errxsNP2,0);
+        double errratio = ErrADiviB(xsEFT/xsSM, xsEFT, xsSM, errxsEFT, errxsSM, 0);
+        std::cout<<"-------------------"<<std::endl;
+        std::cout<<"for "<<hNP<<std::endl;
+        std::cout<<"Lin xs\t"<<xsEFTNP2<<"+-"<<errxsNP2<<std::endl;
+        std::cout<<"Qua xs\t"<<xsEFTNP<<"+-"<<errxsNP<<std::endl;
+        std::cout<<"SM  xs\t"<<xsSM<<"+-"<<errxsSM<<std::endl;
+        std::cout<<"EFT/SM\t"<<xsEFT/xsSM<<"+-"<<errratio<<std::endl;
+        
+        double errplusNP, errminusNP, errplusNP2, errminusNP2, errplusSM, errminusSM; 
+        double xsminus=h_NP->IntegralAndError(1,nbin/2, errminusNP) + h_NP2->IntegralAndError(1,nbin/2, errminusNP2)+h_SM->IntegralAndError(1,nbin/2, errminusSM);
+        double xsplus=h_NP->IntegralAndError(nbin/2+1, nbin, errplusNP) + h_NP2->IntegralAndError(nbin/2+1, nbin, errplusNP2)+h_SM->IntegralAndError(nbin/2+1, nbin, errplusSM);
+        double xsplusSM = h_SM->IntegralAndError(nbin/2+1, nbin, errplusSM);
+        double xsminusSM = h_SM->IntegralAndError(1,nbin/2, errminusSM);
+        double asySM    = (xsplusSM - xsminusSM) / (xsplusSM + xsminusSM);
+        double asy      = (xsplus - xsminus) / (xsplus + xsminus);
+        double errplus = ErrAPlusB(ErrAPlusB(errplusNP, errplusNP2,0), errplusSM,0);
+        double errminus = ErrAPlusB(ErrAPlusB(errminusNP, errminusNP2,0), errminusSM,0);
+
+        double errup    = ErrAPlusB(errplus,errminus,0);
+        double errdown  = ErrAMinusB(errplus,errminus,0);
+        double errasy   = ErrADiviB(asy, (xsplus - xsminus), (xsplus + xsminus), errup, errdown, 0);
+
+        double errupSM    = ErrAPlusB(errplusSM,errminusSM,0);
+        double errdownSM  = ErrAMinusB(errplusSM,errminusSM,0);
+        double errasySM   = ErrADiviB(asySM, (xsplusSM - xsminusSM), (xsplusSM + xsminusSM), errupSM, errdownSM, 0);
+        std::cout<<"Asymm SM\t"<<asySM<<"+-"<<errasySM<<std::endl;
+        std::cout<<"Asymm\t"<<asy<<"+-"<<errasy<<std::endl;
+        std::cout<<"-------------------"<<std::endl;
+
+    }
     //calculate just Ratio
     auto h_ratio_NP = HistOverHist(h_NP, h_SM);
     auto h_ratio_NP2 = HistOverHist(h_NP2, h_SM);
@@ -96,6 +136,7 @@ void drawRatio(const char* fSM, const char* fNP, const char* fNP2, const char* h
     texx.DrawLatex((xmax - xmin)*0.2 + xmin, yext*0.8, wilson_coe);
     texx.DrawLatex((xmax - xmin)*0.2 + xmin, yext*0.65, "#Lambda = 1000");
     c0.SaveAs(fout);
+    
 }
 
 int main(){
